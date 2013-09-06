@@ -1,0 +1,185 @@
+// HEADER
+header a, {
+  color: @white;
+}
+
+.nav-pills > li + li {
+  margin: 5px 2.5%;
+}
+
+header .logo {
+  margin: 20px auto 10px;
+  text-align: center;
+}
+
+header .nav-pills {
+
+  li {
+    float: left;
+    a {
+      padding: 7px 15px;
+      font-weight: 200;
+      &:hover, &:active {
+        color: @white;
+      }
+    }
+    &:last-child{
+//      margin-right: 0;
+    }
+  }
+
+  li > a:hover, .open > a, .open > a:focus, li.active > a, .open > a:hover{
+    background-color: @blue-light;
+    color: @white;
+  }
+}
+.dropdown-menu {
+  background-color: @blue-light;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+//  margin-top: -3px;
+  li a{
+    color: @white;
+    &:hover, &:active {
+      color: @white;
+    }
+  }
+}
+
+li.dropdown a:hover, li.dropdown a:active{
+  color: @white;
+  .caret {
+    border-top-color:@white;
+    border-bottom-color:@white;
+  }
+}
+
+.nav .caret, .nav .caret:hover{
+  color: @white;
+  border-top-color: @white;
+  border-bottom-color: @white;
+}
+
+
+.navbar {
+  margin: 0;
+  padding: 0;
+}
+.navbar-brand{
+  padding-left: 0;
+}
+
+// CONTENT
+
+.full-width{
+  width: 100%;
+  margin-bottom: 5px;
+}
+.full-width-stripe{ // to be used with image 238px high;
+  background-color: @orange;
+  height: 20px;
+  width: 100%;
+  //@todo adjust at breakpoints!
+  margin-bottom: 137px;
+}
+
+.full-width-image {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: -157px;
+
+  .container {
+    margin-top: 0;
+    text-align: center;
+  }
+  .row{
+    margin-top: 0;
+  }
+}
+
+.full-width-buttons{
+  margin-bottom: -65px;
+}
+
+.full-width-stripes-blue{
+  margin-bottom: 60px;
+}
+
+.banner-text {
+  padding: 10px 0;
+  border-bottom: 3px solid @orange;
+  background-color: @blue-light;
+
+  .container {
+    text-align: center;
+  }
+  .lead {
+    margin: 10px 0;
+    color: @white;
+    font-weight: 200;
+  }
+}
+
+.orange {
+  height: 2px;
+  background-color: @orange;
+}
+.blue-light {
+  height: 2px;
+  margin-bottom: 5px;
+  background-color: @blue-light;
+}
+
+.blue-dark {
+  height: 2px;
+  background-color: @blue-dark;
+}
+
+.rounded {
+  border-radius: 5px;
+}
+
+.stripe {
+  background: @orange;
+  height: 20px;
+}
+
+.top-image {
+  width: 100%;
+  margin: 15px auto;
+}
+
+.panel {
+  padding: 15px;
+}
+
+.well {
+  background-color: #fafafa;
+}
+
+// Publication block:
+.publication {
+  a {
+    text-decoration: none;
+    color: @blue-dark;
+    &:hover{
+      color: @blue-dark;
+    }
+  }
+  h3{
+    text-align: center;
+    color: @blue-dark;
+    border-bottom: @orange 2px solid;
+    padding-bottom: 10px;
+    line-height: 1.4em;
+  }
+  img {
+    box-shadow: #dddddd 0px 1px 5px 2px;
+//    max-width: 252px;
+    margin: 0 auto 20px;
+  }
+}
+
+
+// FOOTER

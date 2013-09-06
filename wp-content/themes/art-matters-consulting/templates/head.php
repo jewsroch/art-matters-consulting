@@ -10,5 +10,6 @@
 
   <?php wp_head(); ?>
 
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic|Merriweather:400,300,300italic,400italic,700' rel='stylesheet' type='text/css'>
   <link rel="alternate" type="application/rss+xml" title="<?php echo get_bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
 </head>

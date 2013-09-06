@@ -1,0 +1,100 @@
+// Fonts
+body, h1, h2, h3, h4, h5, p, li, a, .lead {
+  font-family: 'Lato', 'helveticaneue light', "helvetica neue light", "helvetica neue", "helvetica", sans-serif;
+  font-weight: 300;
+}
+
+p, p a, {
+  font-family: 'Merriweather', serif;
+}
+
+// Typography Elements
+//h1{
+//  padding-bottom: 5px;
+//  border-bottom: @orange 10px solid;
+//}
+
+
+.lead{
+//  font-size: 1.9em;
+}
+
+.btn-amc{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight: @font-weight-thin;
+  border: none;
+}
+
+.btn{
+  border:none;
+  font-weight: @font-weight-thin;
+}
+
+.btn-warning{
+  background-color: @orange;
+}
+
+.btn-info{
+  background-color: @blue-dark;
+}
+
+
+small, aside {
+  font-size: 10px;
+}
+
+// Layout Elements
+header {
+  top: 0;
+  background: @blue-dark;
+  padding: 0 0 0 0;
+}
+
+.row {
+  margin-top: 25px;
+}
+header .row{
+  margin-top: 0
+}
+
+.no-margin {
+  margin: 0;
+}
+
+footer {
+  .row, .container{
+    margin-top: 0;
+  }
+  margin: 50px 0 0 0;
+  background-color: @blue-light;
+  border-top: 2px solid @orange;
+  clear: both;
+
+  .footer-icon{
+//    margin-top:15px;
+    text-align: right;
+  }
+  .footer-icon a{
+    margin-top: 20px;
+    color: @white;
+    &:hover, &:active{
+      text-decoration: none;
+      color: #eeeeee;
+    }
+  }
+  ul {
+    margin-bottom: 0;
+  }
+  .footer-nav{
+    height: 150px;
+    margin-top: 20px;
+    a{
+      color: @white;
+      &:hover, &:active{
+        text-decoration: none;
+        color: #eeeeee;
+      }
+    }
+  }
+}
