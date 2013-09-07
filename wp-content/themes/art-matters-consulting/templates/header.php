@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 logo col-md-12">
-                <a class="logo" href="#"><img src="/assets/img/logo.png" alt="Art Matters Consulting"/></a>
+                <a class="logo" href="#"><img src="assets/img/logo.png" alt="Art Matters Consulting"/></a>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-9">
                 <nav class="nav-main" role="navigation">
@@ -28,7 +28,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <img src="/assets/img/art-museum.jpg" class="top-image img-responsive img-rounded" alt="Responsive image">
+                <img src="assets/img/art-museum.jpg" class="top-image img-responsive img-rounded" alt="Responsive image">
             </div>
         </div>
     </div>
