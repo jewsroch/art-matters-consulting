@@ -1,10 +1,15 @@
 @media only screen and (min-width: 992px) {
-  .nav {
+  nav.nav-main ul.nav.nav-pills {
     padding: 10px 0;
     text-align: center;
     margin: 0 auto;
+    list-style: none outside none;
+//    margin: 0;
+//    padding: 0;
+    text-align: center;
+    width: 80%;
     li {
-      float: left;
+      display: inline;
       width: auto;
       margin: 5px 5px;
     }
@@ -18,7 +23,7 @@
   .nav-pills > li + li {
     margin: 5px 5px;
   }
-  .full-width-stripe{
+  .full-width-stripe {
     margin-bottom: 114px;
   }
   .full-width-image{
@@ -34,6 +39,14 @@
   .nav {
     padding: 30px 0;
     float: right;
+  }
+  nav.nav-main ul.nav.nav-pills {
+    padding: 30px 0;
+    float: right;
+    width: auto;
+    li {
+      float: left;
+    }
   }
   .nav-6 li {
     width: auto;

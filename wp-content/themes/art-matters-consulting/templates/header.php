@@ -24,8 +24,6 @@
     </div>
 </div>
 
-<?php if the_post_th
-
 <div class="full-width-image">
     <div class="container">
         <div class="row">
