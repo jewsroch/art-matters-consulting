@@ -1,5 +1,4 @@
-.logs/*
-
+/.logs/*
 /.htaccess
 /wp-config.php
 /wp-content/uploads/
@@ -9,8 +8,8 @@
 /wp-content/advanced-cache.php
 /wp-content/wp-cache-config.php
 /media
-assets/up
-sitemap.xml
+/assets/up
+/sitemap.xml
 /*.log
 /wp-content/cache/
 /wp-content/backups/
