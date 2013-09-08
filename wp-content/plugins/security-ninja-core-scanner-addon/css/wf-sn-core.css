@@ -1,0 +1,59 @@
+.sn-file-list {
+  list-style-type: circle;
+  list-style-position: inside;  margin-left: 25px
+}
+.sn-cs-changed-bad,.sn-cs-missing-bad,.sn-cs-changed-ok,.sn-cs-missing-ok,.sn-cs-ok {	margin:0 0 33px 0;	display:block;	clear:both}
+.sn-cs-changed-bad p,.sn-cs-missing-bad p,.sn-cs-changed-ok p,.sn-cs-missing-ok p,.sn-cs-ok p {	font-size:12px;	font-weight:normal;	margin-bottom:15px;color: #666}
+.sn-cs-changed-bad h4,.sn-cs-missing-bad h4,.sn-cs-changed-ok h4,.sn-cs-missing-ok h4,.sn-cs-ok h4 {	font-size:17px;}
+.sn-cs-changed-bad h4 {color:red; margin-bottom: 0;}
+.sn-cs-missing-bad h4 {color:#EFA800; margin-bottom: 0;}
+.sn-cs-changed-ok h4 {color:#6FBF00; margin-bottom: 0;}
+.sn-cs-missing-ok h4 {color:#6FBF00; margin-bottom: 0;}
+.sn-cs-ok h4 {color:#444; margin-bottom: 0;}
+.sn-file {	font-style:italic;	margin-right:20px; color:#888}
+.sn-show-source, .sn-restore-source {	
+	margin:0 15px 0 1px;	
+	font-size: 11px;
+	text-decoration: none;
+	font-weight: bold
+}
+.sn-file-list li {	margin-bottom:10px}
+.sn-cs-changed-bad,.sn-cs-missing-bad,.sn-cs-changed-ok,.sn-cs-missing-ok,.sn-cs-ok {
+	border-bottom:1px dotted #ccc;
+	padding-bottom:20px
+}
+.sn-cs-ok {
+	border-bottom:0
+}
+.sn-show-source:after, .sn-restore-source:after {
+	content:'›';
+	margin-left: 3px;
+	font-size: 13px
+}
+
+.sn-cs-ok h4 {
+	font-weight: bold;
+	margin-bottom: 5px
+}
+
+.sn_count {
+	font-weight:bold;
+	font-size:32px;
+	letter-spacing:-3px
+}
+
+.wrap h2 {
+	color: #464646;
+	font-size: 30px;
+	font-weight: bold;
+	letter-spacing: -1px;
+	margin-top: 18px
+}
+
+#source-dialog p, #restore-dialog p {
+  margin: 20px;
+}
+
+.wp-dialog .ui-dialog-title {
+  padding: 3px 18px 5px 3px !important;
+}

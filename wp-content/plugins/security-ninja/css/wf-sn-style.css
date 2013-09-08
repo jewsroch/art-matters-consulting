@@ -1,0 +1,196 @@
+/*
+ * Security Ninja
+ * (c) 2011. Web factory Ltd
+ */
+
+
+/*
+ * jQuery UI Tabs 1.8.14
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Tabs#theming
+ */
+.ui-tabs { position: relative; padding: .2em; zoom: 1;margin-top:25px } /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+.ui-tabs .ui-tabs-nav { margin: 0; padding: .2em .2em 0; }
+.ui-tabs .ui-tabs-nav li { list-style: none; float: left; position: relative; top: 1px; margin: 0 .2em 1px 0; border-bottom: 0 !important; padding: 0; white-space: nowrap; }
+.ui-tabs .ui-tabs-nav li a { text-decoration: none; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; border-bottom: 1px solid #FFFFFF !important; }
+.ui-tabs ul.ui-tabs-nav li.ui-state-active { margin-bottom: 0; border-bottom: 1px solid #FFFFFF !important; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
+.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+.ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 1em 1.4em; background: none; }
+.ui-tabs .ui-tabs-hide { display: none !important; }
+
+.ui-tabs .ui-tabs-nav li a {
+  font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 32px;
+  color: #AAAAAA;
+  padding: 0 15px;
+}
+
+.ui-tabs ul.ui-tabs-nav li {
+  border-color: #DFDFDF #DFDFDF #FFFFFF;
+  border-radius: 3px 3px 0 0;
+  border-style: solid;
+  border-width: 1px 1px 0;
+  color: #AAAAAA;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 16px;
+  margin: 0 6px -1px 15px;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #FFFFFF;
+}
+
+ul.ui-tabs-nav{
+  float: left;
+  border-bottom: 1px solid #CCCCCC;
+  padding-bottom: 0;
+  width: 100%;
+  margin-bottom: 30px !important
+}
+
+.ui-state-hover a, .ui-state-active a {
+  color: #464646 !important;
+}
+
+.ui-state-hover a {
+  color: #D54E21 !important;
+}
+
+
+
+.sn-tabs-last {
+  margin-left: 0 !important;
+}
+
+.sn-error, .sn-warning, .sn-success {
+  font-weight: bold;
+  padding: 3px 12px;
+  margin-bottom: 2px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  text-align: center;
+  color: #fff;
+  float: left;
+  min-width: 60px;
+}
+
+.sn-error {
+  background: #FF0000;
+}
+.sn-warning {
+  background: #efa800;
+}
+.sn-success {
+  background: #6FBF00;
+}
+
+.ui-tabs .widefat td  {
+  vertical-align: middle !important;
+}
+
+.ui-tabs .widefat th  {
+  font-weight: normal;
+}
+
+.sn-notice {
+  margin-left: 4px;
+  font-size: 13px;
+}
+
+.sn-status,.sn-details {
+  width: 90px;
+  text-align: center !important
+}
+
+#security-ninja th, #sn-tests-help th {
+  font-weight: bold;
+}
+
+#sn-tests-help td {
+  vertical-align: top;
+}
+
+#sn-tests-help ul {
+  list-style-position: inside;
+  list-style-type: circle;
+}
+
+
+#icon-sn-lock {
+  background: url('../images/icon-lock-gray.png') no-repeat scroll transparent;
+}
+
+.admin-color-classic #icon-sn-lock {
+  background: url('../images/icon-lock-blue.png') no-repeat scroll transparent !important;
+}
+
+pre {
+  background: none repeat scroll 0 0 #EAEAEA;
+  display: inline-block;
+  padding: 5px;
+  margin: 2px;
+}
+
+.blockMsg {
+  border: none !important;
+  padding: 15px !important;
+  background-color: #000 !important;
+  color: #fff !important;
+  -webkit-border-radius: 10px !important;
+  -moz-border-radius: 10px !important;
+  font-weight: bold !important;
+}
+
+.wrap h2 {
+  color: #464646;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  margin-top: 18px;
+}
+
+.sn-list {
+  list-style-position: inside;
+  list-style-type: disc;
+  margin-left: 10px;
+}
+
+.sn-list ul {
+  list-style-position: inside;
+  list-style-type: circle;
+  margin-left: 10px;
+}
+
+.sn_core_ad {
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  /* IE 5-7 */
+  filter: alpha(opacity=50);
+  /* Netscape */
+  -moz-opacity: 0.5;
+  /* Safari 1.x */
+  -khtml-opacity: 0.5;
+  /* Good browsers */
+  opacity: 0.5;
+}
+
+.sn_schedule_ad {
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  /* IE 5-7 */
+  filter: alpha(opacity=50);
+  /* Netscape */
+  -moz-opacity: 0.5;
+  /* Safari 1.x */
+  -khtml-opacity: 0.5;
+  /* Good browsers */
+  opacity: 0.5;
+}

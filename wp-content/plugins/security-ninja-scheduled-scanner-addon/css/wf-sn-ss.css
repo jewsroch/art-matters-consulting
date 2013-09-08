@@ -1,0 +1,40 @@
+/*
+ * Security Ninja - Scheduled Scanner add-on
+ * (c) Web factory 2012
+ */
+
+#wf-sn-ss-log th {
+  font-weight: bold;
+}
+
+#wf-sn-ss-log td, #wf-sn-ss-log th {
+  line-height: 26px;
+  padding-right: 30px;
+}
+
+#wf-sn-ss-log {
+  width: auto !important;
+}
+
+.ss_header {
+  font-size: 20px;
+  letter-spacing: -1;
+}
+
+.ss_header span {
+  font-size: 18px;
+  letter-spacing: -1;
+}
+
+.sn-ss-nochange {
+  color: #359A17;
+}
+
+.sn-ss-change {
+  color: red;
+}
+
+.no-logs {
+  color: #aaa;
+  font-style: italic;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>Scheduled Scanner add-on for Security Ninja Documentation</title>
+  <meta name="description" content="Scheduled Scanner add-on for Security Ninja WordPress plugin documentation by Web factory Ltd. Sold exclusively on CodeCanyon.">
+  <meta name="lang" content="en">
+  <link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+  <!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+  <link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+</head>
+<body>
+  <div class="container">
+    <h3 class="center alt">&ldquo;Scheduled Scanner add-on for Security Ninja&rdquo; Documentation by &ldquo;Web factory Ltd&rdquo; v1.0</h3>
+    <hr>
+    <h1 class="center">&ldquo;Scheduled Scanner&rdquo; add-on for Security Ninja</h1>
+    <div class="borderTop">
+      <div class="span-6 colborder info prepend-1">
+        <p class="prepend-top"><b>
+          Created: 2012/12/21, revision 1<br />
+          By: Web factory Ltd<br>
+          Support: <a href="http://codecanyon.net/user/WebFactory">via CodeCanyon</a></b>
+        </p>
+      </div><!-- end div .span-6 -->
+      <div class="span-12 last">
+        <p class="prepend-top append-0">Thank you very much for purchasing our premium WordPress plugin. If you have any questions that are beyond the scope of this help file, please feel free to email us via our user page <a href="http://codecanyon.net/user/webfactory">contact form</a>. Have a good one!</p>
+      </div>
+    </div><!-- end div .borderTop -->
+  </div><!-- end div .container -->
+  <div class="container">
+    <h2 id="toc" class="alt">Table of Contents</h2>
+    <ol class="alpha">
+      <li><a href="http://security-ninja.webfactoryltd.com/scheduled-scanner/">Online demo and help</a></li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#usage">Usage</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#credits">Sources and Credits</a></li>
+    </ol>
+  </div><!-- end div .container -->
+  <div class="container">
+<h3 id="installation"><strong>B) Installation</strong> - <a href="#toc">top</a></h3>
+
+<h4>Installation</h4>
+<ol>
+<li>Download the ZIP package from CodeCanyon.</li>
+<li>Open WordPress admin and go to Plugins -&gt; Add New -&gt; Upload. Browse for the ZIP file <em>security-ninja-scheduled-scanner-plugin.zip</em> on your computer and hit "Install Now".</li>
+<li>Activate the plugin.</li>
+</ol>
+
+<h4>Post install 5sec tutorial</h4>
+<ol>
+<li>Open Tools - Security Ninja</li>
+<li>Click the "Scheduled Scanner" tab, set scan settings and click "Save Changes"</li>
+</ol>
+
+<h4>Upgrade</h4>
+<ol>
+<li>Deactivate and delete the plugin in your WP admin -&gt; Plugins.</li>
+<li>Use the Add New -&gt; Upload function to upload the new plugin ZIP file.</li>
+<li>Activate the plugin.</li>
+</ol>
+
+<p>Core Scanner requires Security Ninja plugin v1.45, optionally Security Ninja Core Scanner 1.20 and WordPress core v3.4.</p>
+
+  </div><!-- end div .container -->
+  <div class="container">
+  <h3 id="usage"><strong>B) Usage</strong> - <a href="#toc">top</a></h3>
+
+<p>WordPress cron function depends on site visitors to regularly run its tasks. If your site has very few visitors the tasks wont be run on a regular, predefined interval. Wptuts+ has a great <a href="http://wp.tutsplus.com/articles/insights-into-wp-cron-an-introduction-to-scheduling-tasks-in-wordpress/" target="_blank">article</a> explaining how to make sure the cron does get run even if you have very few visitors.<br />
+
+<h3>Options</h3>
+<ul>
+<li>scan settings - enables/disabled scheduled scans and configures which modules it runs</li>
+<li>scan schedule - sets the scan frequency; twice daily is enough but you can set it to hourly as well</li>
+<li>email report - email reports are optional and can be set after every scan or just after does that indicate a change on the site</li>
+<li>email recipient - email address of the person who will get the reports</li>
+</ul>
+
+<p>After saving options it's recommended to test them using the "Test settings" button. Scans will be immediately run, added to the log and emails sent if they are configured so.</p>
+
+<h3>Scan Logs</h3>
+<p>Logs show the last 50 scan runs (if you need more edit the <i>WF_SN_SS_LOG_LIMIT</i> constant). Each records shows the time-stamp, how long it took for the scan to run and details for both Security Ninja and Core Scanner add-on if they're both enabled.<br>
+If needed you can delete all logs with the "Delete all log entries" button.</p>
+
+
+    </div><!-- end div .container -->
+  <div class="container">
+    <h3 id="faq"><strong>D) FAQ</strong> - <a href="#toc">top</a></h3>
+
+<h4>Will this plugin slow my site down?</h4>
+<p>Absolutely not. The cron runs in the background and it is not run that frequently to cause any issues.</p>
+
+<h4>Will it work on my theme?</h4>
+<p>Sure! Security Ninja Scheduled Scanner works with all themes.</p>
+
+<h4>What changes will Security Ninja Scheduled Scanner make to my site?</h4>
+<p>None! It only scans and shows you reports. It does not do any changes.</p>
+
+<h4>Is this plugin safe to use?</h4>
+<p>Of course.</p>
+
+<h4>Is this plugin legal to use?</h4>
+<p>Yes. It's your site you can do whatever you want with it. Running tests on other people's sites is illegal but Security Ninja Core Scanner can only perform tests on the WP it's installed on.</p>
+
+  </div><!-- end div .container -->
+  <div class="container">
+    <h3 id="credits"><strong>E) Sources and Credits</strong> - <a href="#toc">top</a></h3>
+    <p>Security Ninja Scheduled Scanner add-on does not use any external copyrighted libraries.</p>
+
+  </div><!-- end div .container -->
+    <div class="container">
+    <p>Once again, <strong>thank you</strong> so much for purchasing this premium WordPress plugin. As stated at the beginning, we'd be glad to help you if you have any questions relating to this plugin. We'll do our best to assist. If you have a more general question related to plugins on CodeCanyon, you might consider visiting the forums and asking your question in the "Item Discussion" section.</p><br>
+    <div id="footer_logos"><a href="http://www.webfactoryltd.com/"><img class="footer-logo" src="assets/images/webfactory_logo.png" alt="Web Factory Ltd." /></a><a href="http://codecanyon.net/"><img class="footer-logo" src="assets/images/codecanyon_logo.png" alt="CodeCanyon" /></a></div>
+    <p class="footer-totop"><a href="#toc">Go To Table of Contents</a></p>
+   </div><!-- end div .container -->
+</body>
+</html>

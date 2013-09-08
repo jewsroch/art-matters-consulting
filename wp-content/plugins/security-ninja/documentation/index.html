@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>Security Ninja Documentation</title>
+  <meta name="description" content="Security Ninja WordPress plugin documentation by Web factory Ltd. Sold exclusively on CodeCanyon.">
+  <meta name="lang" content="en">
+  <link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+  <!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+  <link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+</head>
+<body>
+  <div class="container">
+    <h3 class="center alt">&ldquo;Security Ninja&rdquo; Documentation by &ldquo;Web factory Ltd&rdquo; v1.55</h3>
+    <hr>
+    <h1 class="center">&ldquo;Security Ninja&rdquo; Premium WordPress Plugin</h1>
+    <div class="borderTop">
+      <div class="span-6 colborder info prepend-1">
+        <p class="prepend-top"><b>
+          Created: 2012/08/26, revision 11<br />
+          By: Web factory Ltd<br>
+          Support: <a href="http://codecanyon.net/user/WebFactory">via CodeCanyon</a></b>
+        </p>
+      </div><!-- end div .span-6 -->
+      <div class="span-12 last">
+        <p class="prepend-top append-0">Thank you very much for purchasing our WordPress plugin. If you have any questions that are beyond the scope of this help file, please feel free to email us via our user page <a href="http://codecanyon.net/user/webfactory">contact form</a>. Have a good one!</p>
+      </div>
+    </div><!-- end div .borderTop -->
+  </div><!-- end div .container -->
+  <div class="container">
+    <h2 id="toc" class="alt">Table of Contents</h2>
+    <ol class="alpha">
+      <li><a href="http://security-ninja.webfactoryltd.com">Online demo, examples and help</a></li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#usage">Usage</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#credits">Sources and Credits</a></li>
+    </ol>
+  </div><!-- end div .container -->
+  <div class="container">
+<h3 id="installation"><strong>B) Installation</strong> - <a href="#toc">top</a></h3>
+
+<h4>Installation</h4>
+<ol>
+<li>Download the ZIP package from CodeCanyon.</li>
+<li>Open WordPress admin and go to Plugins -&gt; Add New -&gt; Upload. Browse for the ZIP file <em>security-ninja-plugin.zip</em> on your computer and hit “Install Now”.</li>
+<li>Activate the plugin.</li>
+</ol>
+
+<h4>Post install 5sec tutorial</h4>
+<ol>
+<li>Open Tools - Security Ninja</li>
+<li>Click "Run Tests" to analyze your site</li>
+</ol>
+
+<h4>Upgrade</h4>
+<ol>
+<li>Deactivate and delete the plugin in your WP admin -&gt; Plugins.</li>
+<li>Use the Add New -&gt; Upload function to upload the new plugin ZIP file.</li>
+<li>Activate the plugin.</li>
+</ol>
+
+<p>Security Ninja requires WordPress v3.5.</p>
+
+  </div><!-- end div .container -->
+  <div class="container">
+  <h3 id="usage"><strong>B) Usage</strong> - <a href="#toc">top</a></h3>
+
+<p>Security Ninja contains 27 separate security tests. Once you click the "Run Tests" button all tests will be run. Depending on various parameters of your site this can take from ten seconds to 2-3 minutes. Please don't reload the page until testing is done.<br />
+If no test results show up after the page reloads or you get a "Bad AJAX response" please <a href="#max-time">configure max script execution time</a>.</p>
+
+<p>Each test comes with a detailed explanation which you should use to determine whether it affects your site or not. Most test have simple to follow instructions on how to strengthen your site's security. Please read the instruction carefully and follow them only if you feel comfortable doing so.</p>
+
+<h4 id="max-time">Configuring maximum script execution time</h4>
+<p>In order to minimize the impact on your server Security Ninja has a limit on the maximum number of seconds it's tests can run. If you have a very slow server there may be a need to increase this limit.<br >
+If you want to increase this limit open <i>securit-ninja.php</i> and change the line #21 which defines it.</p>
+<pre>// maximum number of seconds tests are allowed to run
+define('WF_SN_MAX_EXEC_SEC', 200);</pre>
+
+<h4 id="max-users">Configuring maximum number of user accounts to perform brute-force attacks on</h4>
+<p>By default Security Ninja tests only the first 25 users (starting from administrators) when doing brute-force attacks. This limit is imposed to be sure we don't kill the database while doing the attack.<br />
+If you want to test more or all users open <i>securit-ninja.php</i> and change the line #20 which defines this limit.</p>
+
+<pre>// maximum number of user accounts that are brute-force tested for weak passwords
+define('WF_SN_MAX_USERS_ATTACK', 25);</pre>
+
+    </div><!-- end div .container -->
+  <div class="container">
+    <h3 id="faq"><strong>D) FAQ</strong> - <a href="#toc">top</a></h3>
+
+<h4>Will this plugin slow my site down?</h4>
+<p>Absolutely not. You may experience a slight slow down while tests are being run but that takes less than a minute.</p>
+
+<h4>Will it work on my theme?</h4>
+<p>Sure! Security Ninja works with all themes.</p>
+
+<h4>Will it work with my plugins?</h4>
+<p>Sure! Security Ninja works with all plugins.</p>
+
+<h4>What changes will Security Ninja make to my site?</h4>
+<p>None! Security Ninja will just give you the test results and suggest corrective measures with precise instruction. It will not make any changes to your site.</p>
+
+<h4>Is this plugin safe to use?</h4>
+<p>Of course. It's just a reporting tool.</p>
+
+<h4>Is this plugin legal to use?</h4>
+<p>Yes. It's your site you can do whatever you want with it. Running tests on other people's sites is illegal but Security Ninja can only perform tests on the WP it's installed on.</p>
+
+  </div><!-- end div .container -->
+  <div class="container">
+    <h3 id="credits"><strong>E) Sources and Credits</strong> - <a href="#toc">top</a></h3>
+    <p>Security Ninja uses the following icons, JavaScript libraries and other assets.
+    <ul>
+      <li><strong>jQuery ScrollTo plugin</strong><br>(c) Ariel Flesler http://flesler.blogspot.com/<br>Dual licensed under the MIT and GPL licenses</li>
+      <li><strong>jQuery blockUI plugin</strong><br>
+      Copyright (c) M. Alsup<br>
+      http://malsup.com/jquery/block/
+      Dual licensed under the MIT and GPL licenses</li>
+    </ul>
+  </div><!-- end div .container -->
+    <div class="container">
+    <p>Once again, <strong>thank you</strong> so much for purchasing this premium WordPress plugin. As stated at the beginning, we'd be glad to help you if you have any questions relating to this plugin. We'll do our best to assist. If you have a more general question related to plugins on CodeCanyon, you might consider visiting the forums and asking your question in the "Item Discussion" section.</p><br>
+    <div id="footer_logos"><a href="http://www.webfactoryltd.com/"><img class="footer-logo" src="assets/images/webfactory_logo.png" alt="Web Factory Ltd." /></a><a href="http://codecanyon.net/"><img class="footer-logo" src="assets/images/codecanyon_logo.png" alt="CodeCanyon" /></a></div>
+    <p class="footer-totop"><a href="#toc">Go To Table of Contents</a></p>
+   </div><!-- end div .container -->
+</body>
+</html>
