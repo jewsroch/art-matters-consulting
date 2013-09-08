@@ -2,3 +2,54 @@
 /**
  * Custom functions
  */
+remove_filter( 'the_content', 'wpautop' );
+
+/**
+ * Custom shortcodes
+ */
+function row_shortcode( $atts , $content = null ) {
+
+    // Attributes
+    extract( shortcode_atts(
+            array(
+                'class' => '',
+            ), $atts )
+    );
+
+    // Code
+    $code = '';
+    $code .= '<div class="row ' . esc_attr($class) . '">';
+    $code .= wpautop(do_shortcode($content));
+    $code .= '</div>';
+    return $code;
+}
+add_shortcode( 'row', 'row_shortcode' );
+
+
+function shortcodeColumn($atts, $content = null)
+{
+    extract( shortcode_atts( array(
+        'align'     => 'left',
+        'size'      => '12',
+        'offset'  => '0',
+    ), $atts ) );
+
+    if ($size <= 0) {
+        $size = 1;
+    }
+    if ($size > 12) {
+        $size = 12;
+    }
+
+    if ($pad_left > (12 - $size)) {
+        $pad_left = (12 - $size);
+    }
+
+    $code  = "<div class='" . esc_attr("col-sm-{$size} ") . ($offset > 0 ? esc_attr("col-md-offset-{$offset} ") : "") . esc_attr("text-{$align}") . "'>\n";
+    $code .= do_shortcode($content);
+    $code .= "</div>\n";
+
+    return $code;
+}
+
+add_shortcode('column', 'shortcodeColumn');

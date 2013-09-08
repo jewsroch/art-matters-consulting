@@ -21,10 +21,10 @@ define('POST_EXCERPT_LENGTH', 40);
 function roots_main_class() {
   if (roots_display_sidebar()) {
     // Classes on pages with the sidebar
-    $class = 'col-sm-8';
+    $class = 'container';
   } else {
     // Classes on full width pages
-    $class = 'col-sm-12';
+    $class = 'container';
   }
 
   return $class;

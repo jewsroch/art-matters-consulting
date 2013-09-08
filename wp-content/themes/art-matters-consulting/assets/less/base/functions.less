@@ -1,0 +1,138 @@
+// Use Less.js 1.3.2 or higher to compile.
+
+.opacity (@amount: 1.0) {
+  -moz-opacity:         @amount !important;
+  -webkit-opacity:      @amount !important;
+  -khtml-opacity:       @amount !important;
+
+  @amtfilter:           @amount * 100;
+
+  filter:               alpha(opacity=@amtfilter) !important;
+  opacity:              @amount !important;
+}
+
+.transition(@transition: all ease-in .2s) {
+  -webkit-transition: @transition;
+  -moz-transition:    @transition;
+  transition:         @transition;
+}
+
+.background(@url: '', @size: cover) {
+  background: url('@{url}') no-repeat center center fixed;
+
+  -webkit-background-size:  @size;
+  -moz-background-size:     @size;
+  -o-background-size:       @size;
+  background-size:          @size;
+}
+
+// REM support
+.font-size(@input) {
+  @val:  unit(@input);
+  @rem:  (@val / 10);
+
+  font-size:  ~"@{val}px";
+  font-size:  ~"@{rem}rem";
+}
+
+.line-height(@input) {
+  @val:  unit(@input);
+  @rem:  (@val / 10);
+
+  line-height:  ~"@{val}px";
+  line-height:  ~"@{rem}rem";
+}
+
+.margin-top(@input) {
+  @val:  unit(@input);
+  @rem:  (@val / 10);
+
+  margin-top: ~"@{val}px";
+  margin-top: ~"@{rem}rem";
+}
+
+.margin-right(@input) {
+  @val:  unit(@input);
+  @rem:  (@val / 10);
+
+  margin-right: ~"@{val}px";
+  margin-right: ~"@{rem}rem";
+}
+
+.margin-bottom(@input) {
+  @val:  unit(@input);
+  @rem:  (@val / 10);
+
+  margin-bottom: ~"@{val}px";
+  margin-bottom: ~"@{rem}rem";
+}
+
+.margin-left(@input) {
+  @val:  unit(@input);
+  @rem:  (@val / 10);
+
+  margin-left: ~"@{val}px";
+  margin-left: ~"@{rem}rem";
+}
+
+.margin(@t-in, @r-in, @b-in, @l-in) {
+  @t: unit(@t-in);
+  @r: unit(@r-in);
+  @b: unit(@b-in);
+  @l: unit(@l-in);
+
+  @t-rem:  (@t / 10);
+  @r-rem:  (@r / 10);
+  @b-rem:  (@b / 10);
+  @l-rem:  (@l / 10);
+
+  margin:     ~"@{t}px" ~"@{r}px" ~"@{b}px" ~"@{l}px";
+  margin:     ~"@{t-rem}rem" ~"@{r-rem}rem" ~"@{b-rem}rem" ~"@{l-rem}rem";
+}
+
+.padding-top(@input) {
+  @val:  unit(@input);
+  @rem:  (@val / 10);
+
+  padding-top:  ~"@{val}px";
+  padding-top:  ~"@{rem}rem";
+}
+
+.padding-right(@input) {
+  @val:  unit(@input);
+  @rem:  (@val / 10);
+
+  padding-right:  ~"@{val}px";
+  padding-right:  ~"@{rem}rem";
+}
+
+.padding-bottom(@input) {
+  @val:  unit(@input);
+  @rem:  (@val / 10);
+
+  padding-bottom:  ~"@{val}px";
+  padding-bottom:  ~"@{rem}rem";
+}
+
+.padding-left(@input) {
+  @val:  unit(@input);
+  @rem:  (@val / 10);
+
+  padding-left:  ~"@{val}px";
+  padding-left:  ~"@{rem}rem";
+}
+
+.padding(@t-in, @r-in, @b-in, @l-in) {
+  @t: unit(@t-in);
+  @r: unit(@r-in);
+  @b: unit(@b-in);
+  @l: unit(@l-in);
+
+  @t-rem:  (@t / 10);
+  @r-rem:  (@r / 10);
+  @b-rem:  (@b / 10);
+  @l-rem:  (@l / 10);
+
+  padding:      ~"@{t}px" ~"@{r}px" ~"@{b}px" ~"@{l}px";
+  padding:      ~"@{t-rem}rem" ~"@{r-rem}rem" ~"@{b-rem}rem" ~"@{l-rem}rem";
+}
