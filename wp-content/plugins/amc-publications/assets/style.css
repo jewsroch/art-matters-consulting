@@ -1,0 +1,30 @@
+<style type="text/css">
+
+    .amc-panel label {
+        display:    block;
+        margin-top: 10px;
+    }
+
+    .amc-panel label, .amc-panel input, .amc-panel textarea, .amc-panel select {
+        width:      100%;
+    }
+
+    .amc-panel .box {
+        border:     1px solid #ccc;
+        background: #fff;
+
+        margin:     10px 0;
+        padding:    10px;
+    }
+
+    .amc-panel .box h2 {
+        padding-top:    0 !important;
+        margin-top:     0 !important;
+        border-bottom:  1px solid #ccc;
+    }
+
+    .amc-panel .required {
+        color:      #999;
+    }
+
+</style>
