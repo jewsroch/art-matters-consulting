@@ -1,5 +1,5 @@
 // HEADER
-header a, {
+header.navbar a, {
   color: @white;
 }
 
@@ -7,12 +7,12 @@ header a, {
   margin: 5px 2.5%;
 }
 
-header .logo {
+header.navbar .logo {
   margin: 20px auto 10px;
   text-align: center;
 }
 
-header .nav-pills {
+header.navbar .nav-pills {
 
   li {
     float: left;
@@ -168,6 +168,10 @@ li.dropdown a:hover, li.dropdown a:active{
 
 // Publication block:
 .publication {
+  header{
+    margin: 0;
+    padding: 0;
+  }
   a {
     text-decoration: none;
     color: @blue-dark;
@@ -176,6 +180,7 @@ li.dropdown a:hover, li.dropdown a:active{
     }
   }
   h3{
+    margin-top: 0;
     text-align: center;
     color: @blue-dark;
     border-bottom: @orange 2px solid;

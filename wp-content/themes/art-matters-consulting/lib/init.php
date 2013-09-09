@@ -15,6 +15,7 @@ function roots_setup() {
   add_theme_support('post-thumbnails');
   // set_post_thumbnail_size(150, 150, false);
   add_image_size('responsive-wide', 1024, 238, true); // 300px wide (and unlimited height)
+  add_image_size('publication', 345, 9999); // 300px wide (and unlimited height)
 
   // Add post formats (http://codex.wordpress.org/Post_Formats)
   // add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));

@@ -33,7 +33,7 @@ class AmcPublications
 
     public static $fields
         = array(
-            'Publication Information' => array(
+            'Publication' => array(
                 'pub_sub_title'        => array(
                     'label'     => 'Publication Sub Title',
                     'type'      => 'text',
@@ -61,7 +61,7 @@ class AmcPublications
                     'required' => true,
                 ),
             ),
-            'Url'                => array(
+            'Source'                => array(
                 'pub_url'        => array(
                     'label'    => 'Publication URL (if available)',
                     'type'     => 'text',

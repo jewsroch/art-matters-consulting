@@ -64,7 +64,10 @@ function roots_display_sidebar() {
      * Any of these page templates that return true won't show the sidebar
      */
     array(
-      'template-custom.php'
+      'template-custom.php',
+      'single-amc_publications.php',
+      'archive-amc_publications.php',
+      'content-amc_publications.php',
     )
   );
 
