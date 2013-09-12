@@ -2,9 +2,10 @@
 /**
  * Custom functions
  */
-remove_filter( 'the_content', 'wpautop' );
-add_filter( 'the_content', 'wpautop' , 99);
-add_filter( 'the_content', 'shortcode_unautop', 100);
+//remove_filter( 'the_content', 'wpautop' );
+//add_filter( 'the_content', 'wpautop' , 99);
+add_filter( 'the_content', 'shortcode_unautop', 98);
+
 /**
  * Custom shortcodes
  */
@@ -91,3 +92,61 @@ function heading_shortcode( $atts, $content = null ) {
     return '<' . esc_attr($htype) . '>' . do_shortcode($content) . '</' . esc_attr($htype) . '>';
 }
 add_shortcode('heading', 'heading_shortcode');
+
+function full_width_buttons_shortcode( $atts, $content = null ) {
+    extract( shortcode_atts(
+            array(
+                'button1text' => 'Button 1',
+                'button1url' => '#',
+                'button2text' => 'Button 2',
+                'button2url' => '#',
+            ), $atts )
+    );
+
+    ob_start(); ?>
+        </div>
+        <div class="full-width-buttons">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5 col-md-4 col-md-offset-1 col-sm-offset-1 col-xs-12">
+                        <a href="<?php echo $button1url; ?>" class="btn btn-block btn-primary btn-lg btn-amc"><?php echo $button1text; ?></a>
+                    </div>
+                    <div class="col-sm-5 col-md-4 col-md-offset-2 col-xs-12">
+                        <a href="<?php echo $button2url; ?>" class="btn btn-block btn-primary btn-lg btn-amc"><?php echo $button2text; ?></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="full-width-stripes-blue hidden-xs">
+            <div class="full-with blue-light"></div>
+            <div class="full-with blue-light"></div>
+            <div class="full-with blue-light"></div>
+            <div class="full-with blue-light"></div>
+        </div>
+        <div class="container">
+    <?php
+    return ob_get_clean();
+}
+add_shortcode('full_width_buttons', 'full_width_buttons_shortcode');
+
+function button_list_left_shortcode( $atts, $content = null ) {
+
+    ob_start();?>
+        <div class="col-sm-5 col-md-4 col-md-offset-1 col-sm-offset-1 col-xs-12 button-list">
+            <?php echo do_shortcode($content); ?>
+        </div>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode('button_list_left', 'button_list_left_shortcode');
+
+function button_list_right_shortcode( $atts, $content = null ) {
+
+    ob_start();?>
+        <div class="col-sm-5 col-md-4 col-md-offset-2 col-xs-12 button-list">
+            <?php echo do_shortcode($content); ?>
+        </div>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode('button_list_right', 'button_list_right_shortcode');
