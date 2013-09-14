@@ -30,6 +30,9 @@ p, p a, {
   border:none;
   font-weight: @font-weight-thin;
 }
+.btn-default{
+  border:1px solid #ccc;
+}
 
 .btn-warning{
   background-color: @orange;
@@ -37,6 +40,13 @@ p, p a, {
 
 .btn-info{
   background-color: @blue-dark;
+  &:hover{
+    background-color: darken(@blue-dark, 10%);
+  }
+}
+
+img{
+  &:extend(.img-rounded);
 }
 
 

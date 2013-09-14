@@ -2,8 +2,8 @@
 /**
  * Custom functions
  */
-//remove_filter( 'the_content', 'wpautop' );
-//add_filter( 'the_content', 'wpautop' , 99);
+remove_filter( 'the_content', 'wpautop' );
+add_filter( 'the_content', 'wpautop' , 99);
 add_filter( 'the_content', 'shortcode_unautop', 98);
 
 /**
@@ -67,32 +67,6 @@ function line_shortcode( $atts ) {
 }
 add_shortcode('line', 'line_shortcode');
 
-function heading_shortcode( $atts, $content = null ) {
-    extract( shortcode_atts(
-            array(
-                'size' => 'large',
-            ), $atts )
-    );
-
-    $htype = '';
-    switch ($size) {
-        case 'large':
-            $htype = 'h2';
-            break;
-        case 'medium':
-            $htype = 'h3';
-            break;
-        case 'small':
-            $htype = 'h4';
-            break;
-        case 'extra-small':
-            $htype = 'h5';
-            break;
-    }
-    return '<' . esc_attr($htype) . '>' . do_shortcode($content) . '</' . esc_attr($htype) . '>';
-}
-add_shortcode('heading', 'heading_shortcode');
-
 function full_width_buttons_shortcode( $atts, $content = null ) {
     extract( shortcode_atts(
             array(
@@ -150,3 +124,73 @@ function button_list_right_shortcode( $atts, $content = null ) {
     return ob_get_clean();
 }
 add_shortcode('button_list_right', 'button_list_right_shortcode');
+
+function well_shortcode( $atts, $content = null ) {
+
+    extract( shortcode_atts(
+            array(
+                'size' => '',
+            ), $atts )
+    );
+
+    ob_start();?>
+    <div class="well <?php echo $size == 'large' ? 'well-lg' : ''; echo $size == 'small' ? 'well-sm' : '';?>">
+        <?php echo do_shortcode($content); ?>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode('well', 'well_shortcode');
+
+function button_shortcode( $atts, $conten = null) {
+
+    extract( shortcode_atts(
+       array(
+           'size' => '',
+           'color' => 'btn-default',
+           'block' => false,
+           'url' => '#',
+           'text' => 'Button Text',
+       ), $atts)
+    );
+    $btn_style = '';
+    switch ($color) {
+        case 'blue-light':
+            $btn_style = 'btn-primary';
+            break;
+        case 'blue-dark':
+            $btn_style = 'btn-info';
+            break;
+        case 'orange':
+            $btn_style = 'btn-warning';
+            break;
+        case 'red':
+            $btn_style = 'btn-danger';
+            break;
+        case 'green':
+            $btn_style = 'btn-success';
+            break;
+        default:
+            $btn_style = 'btn-default';
+    }
+
+    $btn_size = '';
+    switch ($size) {
+        case 'small':
+            $btn_size = 'btn-sm';
+            break;
+        case 'large':
+            $btn_size = 'btn-lg';
+            break;
+        case 'extra-small':
+            $btn_size = 'btn-xs';
+            break;
+        default:
+            $btn_size = '';
+    }
+
+    $code = "";
+    $code .= '<a href="' . $url . '" class="btn ' . $btn_style . ($block ? " btn-block" : "") . ' ' . $btn_size . '">' . $text . '</a>';
+    return $code;
+}
+add_shortcode('button', 'button_shortcode');
