@@ -14,8 +14,10 @@ function roots_setup() {
   // Add post thumbnails (http://codex.wordpress.org/Post_Thumbnails)
   add_theme_support('post-thumbnails');
   // set_post_thumbnail_size(150, 150, false);
-  add_image_size('responsive-wide', 1024, 238, true); // 300px wide (and unlimited height)
-  add_image_size('publication', 345, 9999); // 300px wide (and unlimited height)
+    add_image_size( 'responsive-wide', '1024', '238', true );
+    add_image_size( 'publication', '345', '9999', false );
+    add_image_size( 'medium-large', '525', '9999', false );
+    add_image_size( 'Extra Large', '1025', '1025', false );
 
   // Add post formats (http://codex.wordpress.org/Post_Formats)
   // add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));
