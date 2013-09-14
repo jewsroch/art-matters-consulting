@@ -19,11 +19,12 @@ function row_shortcode( $atts , $content = null ) {
     );
 
     // Code
-    $code = '';
-    $code .= '<div class="row ' . esc_attr($class) . '">';
-    $code .= do_shortcode($content);
-    $code .= '</div>';
-    return $code;
+    ob_start();?>
+    <div class="row<?php echo esc_attr($class); ?>">
+    <?php echo do_shortcode($content); ?>
+    </div>
+    <?php
+    return ob_get_clean();
 }
 add_shortcode( 'row', 'row_shortcode' );
 
@@ -43,15 +44,12 @@ function shortcodeColumn($atts, $content = null)
         $size = 12;
     }
 
-    if ($pad_left > (12 - $size)) {
-        $pad_left = (12 - $size);
-    }
-
-    $code  = "<div class='" . esc_attr("col-sm-{$size} ") . ($offset > 0 ? esc_attr("col-md-offset-{$offset} ") : "") . esc_attr("text-{$align}") . "'>\n";
-    $code .= do_shortcode($content);
-    $code .= "</div>\n";
-
-    return $code;
+    ob_start(); ?>
+    <div class="col-sm-<?php echo $size . " " . ($offset > 0 ? esc_attr("col-md-offset-{$offset} ") : " ") . esc_attr("text-{$align}");?>">
+    <?php echo do_shortcode($content); ?>
+    </div>
+    <?php
+    return ob_get_clean();
 }
 
 add_shortcode('column', 'shortcodeColumn');
