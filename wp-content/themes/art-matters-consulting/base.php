@@ -43,14 +43,24 @@
         <div class="full-width-stripe hidden-xs"></div>
     <?php } ?>
 
-      <div class="main <?php echo roots_main_class(); ?>" role="main">
+    <div class="main <?php echo roots_main_class(); ?>" role="main">
+        <?php if (roots_display_sidebar()) : ?>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8">
+        <?php endif; ?>
         <?php include roots_template_path(); ?>
-      </div><!-- /.main -->
-      <?php if (roots_display_sidebar()) : ?>
-      <!--<aside class="sidebar <?php /*echo roots_sidebar_class(); */?>" role="complementary">
-        <?php /*include roots_sidebar_path(); */?>
-      </aside>--><!-- /.sidebar -->
+
+        <?php if (roots_display_sidebar()) : ?>
+                    </div>
+      <aside class="sidebar <?php echo roots_sidebar_class(); ?>" role="complementary">
+        <?php include roots_sidebar_path(); ?>
+      </aside><!-- /.sidebar -->
+
+                </div>
+            </div>
       <?php endif; ?>
+    </div>
 
   <?php get_template_part('templates/footer'); ?>
 

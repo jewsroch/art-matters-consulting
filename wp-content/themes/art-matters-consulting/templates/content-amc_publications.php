@@ -1,7 +1,7 @@
     <?php $cf = get_post_custom(); //var_dump($cf);?>
 
     <div class="row publication">
-        <article class="col-md-10 col-md-offset-1 col-sm-12 well ">
+        <article class="col-sm-12 well ">
             <header>
                 <h3 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                 <?php // get_template_part('templates/entry-meta'); ?>
