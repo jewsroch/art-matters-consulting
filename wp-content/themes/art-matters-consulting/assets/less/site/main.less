@@ -222,15 +222,35 @@ li.dropdown a:hover, li.dropdown a:active{
       margin-top:0;
     }
     ul {
-      list-style: square;
-      list-style-image: square;
-      .margin-left(10);
+      list-style: none;
+      list-style-image: none;
+      .margin-left(20);
       .padding-left(15);
       li {
         .font-size(16);
         .margin-bottom(5);
+        a:before {
+          content: "\1f516";
+          position: relative;
+          top: 5px;
+          margin-left: -25px;
+          display: block;
+          float: left;
+          height: 100%;
+          font-family: 'Glyphicons Halflings';
+          -webkit-font-smoothing: antialiased;
+          font-style: normal;
+          font-weight: normal;
+          line-height: 1;
+        }
+        &.cat-item a:before{
+          content: "\e041";
+        }
       }
     }
+  }
+  &.widget_archive .widget-inner ul li a:before{
+    content: "\1f4c5";
   }
 }
 
