@@ -216,10 +216,13 @@ li.dropdown a:hover, li.dropdown a:active{
   border-bottom: 1px solid #dddddd;
   &.widget_search{
     border:none;
+    .margin-bottom(20);
+    .margin-top(0);
   }
   .widget-inner {
     h3 {
       margin-top:0;
+//      text-align: center;
     }
     ul {
       list-style: none;
@@ -251,6 +254,20 @@ li.dropdown a:hover, li.dropdown a:active{
   }
   &.widget_archive .widget-inner ul li a:before{
     content: "\1f4c5";
+  }
+  .textwidget p, p.vcard {
+    .font-size(14);
+  }
+  table#wp-calendar{
+    width: 100%;
+    .font-size(14);
+    caption{
+      .font-size(18);
+      margin-bottom: 10px;
+    }
+    td, th {
+      text-align: center;
+    }
   }
 }
 
