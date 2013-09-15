@@ -67,13 +67,20 @@ class AmcPublications
                     'type'     => 'text',
                     'required' => false,
                 ),
+                'pub_dl_link'  => array(
+                    'label'    => 'Download Link (copy url from media upload)',
+                    'type'     => 'text',
+                    'required' => false,
+                ),
                 'pub_url_note' => array(
                     'label'    => 'URL comments (ie: subscription required)',
-                    'type'     => 'textarea',
+                    'type'     => 'text',
                     'required' => false,
                 ),
             ),
         );
+
+
 
 
     /* B O O T S T R A P
@@ -96,7 +103,6 @@ class AmcPublications
 
         add_action('save_post', array(&$this, 'savePublication'), 3, 1);
     }
-
 
     /**
      * Installs and sets up this plugin, for both first-time setup, upgrades, and per-use settings.

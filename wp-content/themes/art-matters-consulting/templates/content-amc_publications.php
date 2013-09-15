@@ -8,7 +8,7 @@
             </header>
             <div class="row">
                 <div class="col-xs-6 text-center col-sm-3 <?php echo (get_the_ID() % 2 == 0) ? 'pull-right': ''; ?>">
-                    <a target="_blank" href="<?php echo esc_attr($cf['pub_url'][0]); ?>">
+                    <a target="_blank" href="<?php echo $cf['pub_dl_link']['0'] == '' ? esc_url($cf['pub_url']['0']) : esc_url($cf['pub_dl_link']['0']); ?>">
                     <?php the_post_thumbnail('publication', array(
                         'class' => 'img-responsive img-rounded publication-image',
                         'alt' => get_the_title(),
@@ -28,7 +28,7 @@
                                 <?php if ($cf['pub_source']['0'] != ''){ ?>
                                     <dt><span class="glyphicon glyphicon-book"></span></dt>
                                     <dd>
-                                        <a target="_blank" href="<?php echo esc_attr($cf['pub_url'][0]); ?>">
+                                        <a target="_blank" href="<?php echo esc_url($cf['pub_url'][0]); ?>">
                                             <?php echo esc_attr($cf['pub_source']['0']); ?>
                                         </a>
                                     </dd>
@@ -41,7 +41,6 @@
 
                                 <?php
                                 $terms = get_the_terms(get_the_ID(), 'publications_categories');
-//                                var_dump($terms);
                                 if ($terms != false && !is_wp_error($terms)){ ?>
                                     <dt><span class="glyphicon glyphicon-tags"></span></dt>
                                     <dd><?php the_terms(get_the_ID(), 'publications_categories', '', ', '); ?></dd>
@@ -54,8 +53,11 @@
                             </dl>
                         </div>
                         <div class="col-xs-12 col-sm-4 pub-actions">
-                            <a href="#" class=" btn btn-default"><span class="glyphicon glyphicon-print"></span>Print</a>
-                            <a href="#" class=" btn btn-default"><span class="glyphicon glyphicon-search"></span>View</a>
+                            <?php if ($cf['pub_dl_link']['0'] != '') { ?>
+                            <a href="<?php echo esc_url($cf['pub_dl_link']['0']); ?>" class=" btn btn-default"><span class="glyphicon glyphicon-print"></span>Download</a>
+                            <?php } else { ?>
+                            <a href="<?php echo esc_url($cf['pub_url']['0']); ?>" class=" btn btn-default"><span class="glyphicon glyphicon-search"></span>View</a>
+                            <?php } ?>
                         </div>
                     </row>
 
