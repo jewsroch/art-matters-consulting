@@ -17,22 +17,49 @@
                 </div>
                 <div class="col-xs-12 col-sm-9">
                     <?php echo $cf['pub_description']['0']; ?>
-                    <dl class="dl-horizontal">
-                        <dt>Date Published:</dt>
-                        <dd><?php echo esc_attr($cf['pub_date']['0']); ?></dd>
-                        <dt>Journal / Publication:</dt>
-                        <dd>
-                            <a target="_blank" href="<?php echo esc_attr($cf['pub_url'][0]); ?>">
-                            <?php echo esc_attr($cf['pub_source']['0']); ?>
-                            </a>
-                        </dd>
-                        <dt>Author:</dt>
-                        <dd><?php echo esc_attr($cf['pub_author']['0']); ?></dd>
-                        <?php if ($cf['pub_url_note']['0'] != ''){ ?>
-                        <dt><em>Notes:</em></dt>
-                        <dd><em><?php echo esc_attr($cf['pub_url_note']['0']); ?></em></dd>
-                        <?php } ?>
-                    </dl>
+                    <row>
+                        <div class="col-xs-12 col-sm-8">
+                            <dl class="dl-horizontal">
+                                <?php if ($cf['pub_date']['0'] != ''){ ?>
+                                    <dt><span class="glyphicon glyphicon-calendar"></span></dt>
+                                    <dd><?php echo esc_attr($cf['pub_date']['0']); ?></dd>
+                                <?php } ?>
+
+                                <?php if ($cf['pub_source']['0'] != ''){ ?>
+                                    <dt><span class="glyphicon glyphicon-book"></span></dt>
+                                    <dd>
+                                        <a target="_blank" href="<?php echo esc_attr($cf['pub_url'][0]); ?>">
+                                            <?php echo esc_attr($cf['pub_source']['0']); ?>
+                                        </a>
+                                    </dd>
+                                <?php } ?>
+
+                                <?php if ($cf['pub_author']['0'] != ''){ ?>
+                                    <dt><span class="glyphicon glyphicon-user"></span></dt>
+                                    <dd><?php echo esc_attr($cf['pub_author']['0']); ?></dd>
+                                <?php } ?>
+
+                                <?php
+                                $terms = get_the_terms(get_the_ID(), 'publications_categories');
+//                                var_dump($terms);
+                                if ($terms != false && !is_wp_error($terms)){ ?>
+                                    <dt><span class="glyphicon glyphicon-tags"></span></dt>
+                                    <dd><?php the_terms(get_the_ID(), 'publications_categories', '', ', '); ?></dd>
+                                <?php } ?>
+
+                                <?php if ($cf['pub_url_note']['0'] != ''){ ?>
+                                    <dt><span class="glyphicon glyphicon-asterisk"></span></dt>
+                                    <dd><em><?php echo esc_attr($cf['pub_url_note']['0']); ?></em></dd>
+                                <?php } ?>
+                            </dl>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 pub-actions">
+                            <a href="#" class=" btn btn-default"><span class="glyphicon glyphicon-print"></span>Print</a>
+                            <a href="#" class=" btn btn-default"><span class="glyphicon glyphicon-search"></span>View</a>
+                        </div>
+                    </row>
+
+
                 </div>
             </div>
             <?php //comments_template('/templates/comments.php'); ?>
