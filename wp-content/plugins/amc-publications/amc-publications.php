@@ -136,7 +136,7 @@ class AmcPublications
                     'with_front' => false,
                 ),
                 'capability_type' => 'page',
-                'taxonomies' => array('publications_tags', 'publications_categories'),
+                'taxonomies' => array('publications_categories'),
             )
         );
 
@@ -205,7 +205,7 @@ class AmcPublications
      */
     public function initTaxonomy()
     {
-        register_taxonomy(
+        /*register_taxonomy(
             'publications_tags',
             'amc_publications',
             array(
@@ -237,7 +237,7 @@ class AmcPublications
                     'hierarchical'               => false,
                 ),
             )
-        );
+        );*/
 
 
         register_taxonomy(

@@ -210,6 +210,29 @@ li.dropdown a:hover, li.dropdown a:active{
   }
 }
 
+// Sidebar
+.widget {
+  .margin(10,0,0,10);
+  border-bottom: 1px solid #dddddd;
+  &.widget_search{
+    border:none;
+  }
+  .widget-inner {
+    h3 {
+      margin-top:0;
+    }
+    ul {
+      list-style: square;
+      list-style-image: square;
+      .margin-left(10);
+      .padding-left(15);
+      li {
+        .font-size(16);
+        .margin-bottom(5);
+      }
+    }
+  }
+}
 
 // FOOTER
 
