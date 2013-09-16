@@ -192,3 +192,14 @@ function button_shortcode( $atts, $conten = null) {
     return $code;
 }
 add_shortcode('button', 'button_shortcode');
+
+function list_shortcode( $atts, $content = null ) {
+
+    ob_start();?>
+    <div class="check-list">
+        <?php echo do_shortcode($content); ?>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode('checked_list', 'list_shortcode');

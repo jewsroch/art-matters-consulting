@@ -181,6 +181,30 @@ li.dropdown a:hover, li.dropdown a:active{
   background-color: #fafafa;
 }
 
+div.check-list ul {
+  list-style: none;
+  list-style-image: none;
+  li{
+    .margin(10, 0, 10, 0);
+    .font-size(16);
+  }
+  li:before {
+      content: "\e084";
+      color: @orange;
+      position: relative;
+      top: 5px;
+      margin-left: -25px;
+      display: block;
+      float: left;
+      height: 100%;
+      font-family: 'Glyphicons Halflings';
+      -webkit-font-smoothing: antialiased;
+      font-style: normal;
+      font-weight: normal;
+      line-height: 1;
+  }
+}
+
 // Publication block:
 .row.publication {
   margin-top: 0;
