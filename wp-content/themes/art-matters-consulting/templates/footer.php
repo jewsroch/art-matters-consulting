@@ -25,7 +25,8 @@
                 wp_nav_menu( $defaults );
 
                 $styleGuide = get_page_by_title('Style Guide');
-                if (is_admin() && isset($styleGuide) ) {
+//                var_dump($styleGuide);
+                if (is_user_logged_in() && isset($styleGuide) ) {
                     echo '<a href="' . get_permalink($styleGuide->ID) . '">Style Guide</a>';
                 }
                 ?>
