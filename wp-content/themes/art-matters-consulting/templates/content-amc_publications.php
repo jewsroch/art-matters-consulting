@@ -53,10 +53,9 @@
                             </dl>
                         </div>
                         <div class="col-xs-12 col-sm-4 pub-actions">
+                            <a href="<?php echo esc_url($cf['pub_url']['0']); ?>" class=" btn btn-default"><span class="glyphicon glyphicon-search"></span>Visit Journal</a>
                             <?php if ($cf['pub_dl_link']['0'] != '') { ?>
                             <a href="<?php echo esc_url($cf['pub_dl_link']['0']); ?>" class=" btn btn-default"><span class="glyphicon glyphicon-print"></span>Download</a>
-                            <?php } else { ?>
-                            <a href="<?php echo esc_url($cf['pub_url']['0']); ?>" class=" btn btn-default"><span class="glyphicon glyphicon-search"></span>View</a>
                             <?php } ?>
                         </div>
                     </row>
