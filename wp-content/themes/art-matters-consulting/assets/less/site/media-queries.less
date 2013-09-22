@@ -7,15 +7,15 @@
 //    margin: 0;
 //    padding: 0;
     text-align: center;
-    width: 80%;
+//    width: 80%;
     li {
       display: inline;
       width: auto;
-      margin: 5px 5px;
+      margin-top: 5px;
     }
   }
   .nav-6 li {
-    width: 15%;
+//    width: 15%;
     ul li {
       width: auto;
     }
@@ -183,6 +183,39 @@
     }
     dl{
       margin-left: 10px;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  div.nav-container nav.nav-main {
+    &.two-items ul li {
+      width: 48%;
+    }
+    &.three-items ul li {
+      width: 32%;
+    }
+    &.four-items ul li {
+      width: 24%;
+    }
+    &.five-items ul li {
+      width: 19%;
+
+    }
+    &.six-items ul li {
+      width: 15.6%;
+    }
+    &.seven-items ul li {
+      width: 13%;
+    }
+    &.eight-items ul li {
+      width: 11.5%;
+    }
+    &.nine-items ul li {
+      width: 10%;
+    }
+    ul.dropdown-menu li {
+      width: auto;
     }
   }
 }
