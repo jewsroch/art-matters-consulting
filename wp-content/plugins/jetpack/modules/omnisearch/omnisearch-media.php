@@ -1,7 +1,7 @@
 <?php
 
 if( ! class_exists( 'WP_Media_List_Table' ) )
-	require_once(ABSPATH . 'wp-admin/includes/class-wp-media-list-table.php');
+	require_once( ABSPATH . 'wp-admin/includes/class-wp-media-list-table.php' );
 
 class Jetpack_Omnisearch_Media extends WP_Media_List_Table {
 	static $instance;

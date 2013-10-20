@@ -4,7 +4,7 @@ class Red_Apache_File extends Red_FileIO {
 	var $htaccess;
 
 	function collect( $module ) {
-		include_once dirname(dirname(__FILE__)) . '/models/htaccess.php';
+		include_once dirname( dirname( __FILE__ ) ).'/models/htaccess.php';
 
 		$this->htaccess = new Red_Htaccess( $module );
 		$this->name      = $module->name;

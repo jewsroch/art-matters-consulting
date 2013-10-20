@@ -31,12 +31,12 @@ class Red_FileIO
 			$parts = pathinfo( $file['name'] );
 
 			if ( $parts['extension'] == 'csv' ) {
-				include dirname(dirname(__FILE__)) . '/fileio/csv.php';
+				include dirname( dirname( __FILE__ ) ).'/fileio/csv.php';
 				$importer = new Red_Csv_File();
 				$data = '';
 			}
 			else {
-				include dirname(dirname(__FILE__)) . '/fileio/apache.php';
+				include dirname( dirname( __FILE__ ) ).'/fileio/apache.php';
 				$importer = new Red_Apache_File();
 				$data = @file_get_contents ($file['tmp_name']);
 			}

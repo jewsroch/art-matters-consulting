@@ -9,7 +9,7 @@
  */
 
 function jetpack_load_tiled_gallery() {
-	include dirname(__FILE__) . "/tiled-gallery/tiled-gallery.php";
+	include dirname( __FILE__ ) . "/tiled-gallery/tiled-gallery.php";
 }
 
 add_action( 'jetpack_modules_loaded', 'jetpack_tiled_gallery_loaded' );

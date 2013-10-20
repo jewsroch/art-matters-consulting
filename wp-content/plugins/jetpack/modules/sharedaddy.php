@@ -10,7 +10,7 @@
  */
 
 if ( !function_exists( 'sharing_init' ) )
-	include dirname(__FILE__) . '/sharedaddy/sharedaddy.php';
+	include dirname( __FILE__ ).'/sharedaddy/sharedaddy.php';
 
 add_action( 'jetpack_modules_loaded', 'sharedaddy_loaded' );
 

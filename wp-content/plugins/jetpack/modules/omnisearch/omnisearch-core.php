@@ -1,7 +1,7 @@
 <?php
 
 // Include this here so that other plugins can extend it if they like.
-require_once(dirname(__FILE__) . '/omnisearch-posts.php');
+require_once( dirname(__FILE__) . '/omnisearch-posts.php' );
 
 class Jetpack_Omnisearch {
 	static $instance;
@@ -24,16 +24,16 @@ class Jetpack_Omnisearch {
 		new Jetpack_Omnisearch_Posts;
 		new Jetpack_Omnisearch_Posts( 'page' );
 
-		require_once(dirname(__FILE__) . '/omnisearch-comments.php');
+		require_once( dirname(__FILE__) . '/omnisearch-comments.php' );
 		new Jetpack_Omnisearch_Comments;
 
 		if ( current_user_can( 'upload_files' ) ) {
-			require_once(dirname(__FILE__) . '/omnisearch-media.php');
+			require_once( dirname(__FILE__) . '/omnisearch-media.php' );
 			new Jetpack_Omnisearch_Media;
 		}
 
 		if ( current_user_can( 'install_plugins' ) ) {
-			require_once(dirname(__FILE__) . '/omnisearch-plugins.php');
+			require_once( dirname(__FILE__) . '/omnisearch-plugins.php' );
 			new Jetpack_Omnisearch_Plugins;
 		}
 

@@ -8,4 +8,4 @@
  * Auto Activate: Yes
  */
 
-include dirname(__FILE__) . '/contact-form/grunion-contact-form.php';
+include dirname( __FILE__ ) . '/contact-form/grunion-contact-form.php';

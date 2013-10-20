@@ -122,7 +122,7 @@ function stats_template_redirect() {
 	add_action( 'wp_footer', 'stats_footer', 101 );
 	add_action( 'wp_head', 'stats_add_shutdown_action' );
 
-	$blog = Jetpack::get_option( 'id' );
+	$blog = Jetpack_Options::get_option( 'id' );
 	$tz = get_option( 'gmt_offset' );
 	$v = 'ext';
 	$j = sprintf( '%s:%s', JETPACK__API_VERSION, JETPACK__VERSION );
@@ -185,7 +185,7 @@ function stats_get_option( $option ) {
 	$options = stats_get_options();
 
 	if ( $option == 'blog_id' )
-		return Jetpack::get_option( 'id' );
+		return Jetpack_Options::get_option( 'id' );
 
 	if ( isset( $options[$option] ) )
 		return $options[$option];
@@ -210,14 +210,14 @@ function stats_upgrade_options( $options ) {
 		'admin_bar'    => true,
 		'roles'        => array( 'administrator' ),
 		'count_roles'  => array(),
-		'blog_id'      => Jetpack::get_option( 'id' ),
+		'blog_id'      => Jetpack_Options::get_option( 'id' ),
 		'do_not_track' => true, // @todo
 		'hide_smile'   => false,
 	);
 
 	if ( isset( $options['reg_users'] ) ) {
 		if ( ! function_exists( 'get_editable_roles' ) )
-			require_once(ABSPATH . 'wp-admin/includes/user.php');
+			require_once( ABSPATH . 'wp-admin/includes/user.php' );
 		if ( $options['reg_users'] )
 			$options['count_roles'] = array_keys( get_editable_roles() );
 		unset( $options['reg_users'] );
@@ -881,7 +881,7 @@ function stats_dashboard_widget_content() {
 	$_height = $height - ( $GLOBALS['is_winIE'] ? 16 : 5 ); // hack!
 
 	$options = stats_dashboard_widget_options();
-	$blog_id = Jetpack::get_option( 'id' );
+	$blog_id = Jetpack_Options::get_option( 'id' );
 
 	$q = array(
 		'noheader' => 'true',
@@ -1037,7 +1037,7 @@ function stats_get_csv( $table, $args = null ) {
 
 	$args = wp_parse_args( $args, $defaults );
 	$args['table'] = $table;
-	$args['blog_id'] = Jetpack::get_option( 'id' );
+	$args['blog_id'] = Jetpack_Options::get_option( 'id' );
 
 	$stats_csv_url = add_query_arg( $args, 'http://stats.wordpress.com/csv.php' );
 

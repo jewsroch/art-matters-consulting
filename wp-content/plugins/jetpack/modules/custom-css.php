@@ -10,7 +10,7 @@
  */
 
 function jetpack_load_custom_css() {
-	include dirname(__FILE__) . "/custom-css/custom-css.php";
+	include dirname( __FILE__ ) . "/custom-css/custom-css.php";
 }
 
 add_action( 'jetpack_modules_loaded', 'custom_css_loaded' );

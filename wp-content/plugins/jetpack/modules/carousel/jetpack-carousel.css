@@ -18,7 +18,7 @@ div.jp-carousel-fadeaway {
 
 .jp-carousel-next-button span,
 .jp-carousel-previous-button span {
-	background: url(images/arrows.png) no-repeat center center;
+	background: url(./images/arrows.png) no-repeat center center;
 	background-size: 200px 126px;
 }
 
@@ -29,7 +29,7 @@ only screen and (min--moz-device-pixel-ratio: 1.5),
 only screen and (min-device-pixel-ratio: 1.5) {
 	.jp-carousel-next-button span,
 	.jp-carousel-previous-button span {
-		background-image: url(images/arrows-2x.png);
+		background-image: url(./images/arrows-2x.png);
 	}
 }
 
@@ -244,7 +244,7 @@ div.jp-carousel-buttons a.jp-carousel-like,
 div.jp-carousel-buttons a.jp-carousel-reblog,
 div.jp-carousel-buttons a.jp-carousel-commentlink,
 a.jp-carousel-image-download {
-	background: url(images/carousel-sprite.png?4) no-repeat;
+	background: url(./images/carousel-sprite.png?4) no-repeat;
 	background-size: 16px 160px;
 }
 
@@ -309,7 +309,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
 	div.jp-carousel-buttons a.jp-carousel-reblog,
 	div.jp-carousel-buttons a.jp-carousel-commentlink,
 	a.jp-carousel-image-download {
-		background-image: url(images/carousel-sprite-2x.png?4);
+		background-image: url(./images/carousel-sprite-2x.png?4);
 	}
 }
 

@@ -23,16 +23,16 @@ class Jetpack_Publicize {
 			Jetpack_Sync::sync_posts( __FILE__ );
 		}
 
-		require_once dirname(__FILE__) . '/publicize/publicize.php';
+		require_once dirname( __FILE__ ) . '/publicize/publicize.php';
 
 		if ( $this->in_jetpack )
-			require_once dirname(__FILE__) . '/publicize/publicize-jetpack.php';
+			require_once dirname( __FILE__ ) . '/publicize/publicize-jetpack.php';
 		else {
 			require_once dirname( dirname( __FILE__ ) ) . '/mu-plugins/keyring/keyring.php';
 			require_once dirname( __FILE__ ) . '/publicize/publicize-wpcom.php';
 		}
 
-		require_once dirname(__FILE__) . '/publicize/ui.php';
+		require_once dirname( __FILE__ ) . '/publicize/ui.php';
 		$publicize_ui = new Publicize_UI();
 		$publicize_ui->in_jetpack = $this->in_jetpack;
 

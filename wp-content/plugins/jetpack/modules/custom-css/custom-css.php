@@ -1454,7 +1454,7 @@ function safecss_class() {
 	if ( class_exists('safecss') )
 		return;
 
-	require_once(dirname(__FILE__) . '/csstidy/class.csstidy.php');
+	require_once( dirname( __FILE__ ) . '/csstidy/class.csstidy.php' );
 
 	class safecss extends csstidy_optimise {
 		function safecss( &$css ) {
@@ -1483,4 +1483,4 @@ if ( ! function_exists( 'safecss_filter_attr' ) ) {
 
 add_action( 'init', array( 'Jetpack_Custom_CSS', 'init' ) );
 
-include dirname(__FILE__) . '/custom-css/preprocessors.php';
+include dirname( __FILE__ ) . '/custom-css/preprocessors.php';

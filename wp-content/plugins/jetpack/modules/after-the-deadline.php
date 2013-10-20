@@ -23,9 +23,9 @@ function AtD_configuration_load() {
 /*
  *  Load necessary include files
  */
-include('after-the-deadline/config-options.php');
-include('after-the-deadline/config-unignore.php');
-include('after-the-deadline/proxy.php');
+include( 'after-the-deadline/config-options.php' );
+include( 'after-the-deadline/config-unignore.php' );
+include( 'after-the-deadline/proxy.php' );
 
 define('ATD_VERSION', '20120221');
 
@@ -244,4 +244,4 @@ add_action( 'wp_ajax_atd_ignore', 'AtD_ignore_call' );
 add_action( 'wp_ajax_atd_settings', 'AtD_settings' );
 
 /* load and install the localization stuff */
-include('after-the-deadline/atd-l10n.php');
+include( 'after-the-deadline/atd-l10n.php' );

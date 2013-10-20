@@ -1,7 +1,7 @@
 <?php
 
 if( ! class_exists( 'WP_Comments_List_Table' ) )
-	require_once(ABSPATH . 'wp-admin/includes/class-wp-comments-list-table.php');
+	require_once( ABSPATH . 'wp-admin/includes/class-wp-comments-list-table.php' );
 
 class Jetpack_Omnisearch_Comments extends WP_Comments_List_Table {
 	static $instance;

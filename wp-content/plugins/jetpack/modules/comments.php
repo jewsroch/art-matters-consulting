@@ -9,10 +9,10 @@
  * Auto Activate: No
  */
 
-require dirname(__FILE__) . '/comments/comments.php';
+require dirname( __FILE__ ) . '/comments/comments.php';
 
 if ( is_admin() ) {
-	require dirname(__FILE__) . '/comments/admin.php';
+	require dirname( __FILE__ ) . '/comments/admin.php';
 }
 
 Jetpack_Sync::sync_options( __FILE__,

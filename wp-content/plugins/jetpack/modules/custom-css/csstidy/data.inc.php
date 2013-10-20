@@ -656,6 +656,6 @@ $GLOBALS['csstidy']['predefined_templates']['low_compression'][] = '<span class=
 $GLOBALS['csstidy']['predefined_templates']['low_compression'][] = '</span>'."\n"; // after comment
 $GLOBALS['csstidy']['predefined_templates']['low_compression'][] = "\n";
 
-require dirname(__FILE__) . '/data-wp.inc.php';
+require dirname( __FILE__ ) . '/data-wp.inc.php';
 
 ?>

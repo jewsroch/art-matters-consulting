@@ -3,7 +3,7 @@
 Plugin Name: Redirection
 Plugin URI: http://urbangiraffe.com/plugins/redirection/
 Description: Manage all your 301 redirects and monitor 404 errors
-Version: 2.3.3
+Version: 2.3.4
 Author: John Godley
 Author URI: http://urbangiraffe.com
 ============================================================================================================
@@ -19,15 +19,15 @@ For full license details see license.txt
 ============================================================================================================
 */
 
-include dirname(__FILE__) . '/plugin.php';
-include dirname(__FILE__) . '/models/redirect.php';
-include dirname(__FILE__) . '/models/match.php';
-include dirname(__FILE__) . '/models/log.php';
-include dirname(__FILE__) . '/models/group.php';
-include dirname(__FILE__) . '/models/module.php';
-include dirname(__FILE__) . '/models/action.php';
-include dirname(__FILE__) . '/models/monitor.php';
-include dirname(__FILE__) . '/modules/wordpress.php';
+include dirname( __FILE__ ).'/plugin.php';
+include dirname( __FILE__ ).'/models/redirect.php';
+include dirname( __FILE__ ).'/models/match.php';
+include dirname( __FILE__ ).'/models/log.php';
+include dirname( __FILE__ ).'/models/group.php';
+include dirname( __FILE__ ).'/models/module.php';
+include dirname( __FILE__ ).'/models/action.php';
+include dirname( __FILE__ ).'/models/monitor.php';
+include dirname( __FILE__ ).'/modules/wordpress.php';
 
 define( 'REDIRECTION_VERSION', '2.3.1' );
 
@@ -50,7 +50,7 @@ class Redirection extends Redirection_Plugin {
 
 			// Ajax functions
 			if ( defined( 'DOING_AJAX' ) ) {
-				include_once dirname(__FILE__) . '/ajax.php';
+				include_once dirname( __FILE__ ).'/ajax.php';
 				$this->ajax = new RedirectionAjax();
 			}
 		}
@@ -70,7 +70,7 @@ class Redirection extends Redirection_Plugin {
 		$version = get_option( 'redirection_version' );
 
 		if ( $version != REDIRECTION_VERSION ) {
-			include_once dirname(__FILE__) . '/models/database.php';
+			include_once dirname( __FILE__ ).'/models/database.php';
 
 			$db = new RE_Database();
 			return $db->upgrade( $version, REDIRECTION_VERSION );
@@ -193,7 +193,7 @@ class Redirection extends Redirection_Plugin {
 		$options = $this->get_options();
 
 		if ( isset($_GET['token'] ) && isset( $_GET['page'] ) && isset( $_GET['sub'] ) && $_GET['token'] == $options['token'] && $_GET['page'] == 'redirection.php' && in_array( $_GET['sub'], array( 'rss', 'xml', 'csv', 'apache' ) ) ) {
-			include dirname(__FILE__) . '/models/file_io.php';
+			include dirname( __FILE__ ).'/models/file_io.php';
 
 			$exporter = new Red_FileIO;
 			if ( $exporter->export( $_GET['sub'] ) )
@@ -203,7 +203,6 @@ class Redirection extends Redirection_Plugin {
 
 	function admin_screen_options() {
 		if ( isset( $_POST['update'] ) && check_admin_referer( 'redirection-update_options' ) ) {
-			$options['lookup']            = stripslashes( $_POST['lookup'] );
 			$options['monitor_post']      = stripslashes( $_POST['monitor_post'] );
 //			$options['monitor_category']  = stripslashes( $_POST['monitor_category'] );
 			$options['auto_target']       = stripslashes( $_POST['auto_target'] );
@@ -222,7 +221,7 @@ class Redirection extends Redirection_Plugin {
 			$this->render_message( __( 'Your options were updated', 'redirection' ) );
 		}
 		elseif ( isset( $_POST['delete'] ) && check_admin_referer( 'redirection-delete_plugin' ) ) {
-			include dirname(__FILE__) . '/models/database.php';
+			include dirname( __FILE__ ).'/models/database.php';
 
 			$db = new RE_Database;
 			$db->remove( __FILE__ );
@@ -231,7 +230,7 @@ class Redirection extends Redirection_Plugin {
 			return;
 		}
 		elseif ( isset( $_POST['import'] ) && check_admin_referer( 'redirection-import' ) ) {
-			include dirname(__FILE__) . '/models/file_io.php';
+			include dirname( __FILE__ ).'/models/file_io.php';
 
 			$importer = new Red_FileIO;
 
@@ -247,7 +246,7 @@ class Redirection extends Redirection_Plugin {
 	}
 
 	function admin_screen_log() {
-		include dirname(__FILE__) . '/models/pager.php';
+		include dirname( __FILE__ ).'/models/pager.php';
 
 		if ( isset( $_POST['deleteall'] ) && check_admin_referer( 'redirection-process_logs' ) ) {
 			if ( isset( $_GET['module'] ) )
@@ -277,7 +276,7 @@ class Redirection extends Redirection_Plugin {
 	}
 
 	function admin_screen_404() {
-		include dirname(__FILE__) . '/models/pager.php';
+		include dirname( __FILE__ ).'/models/pager.php';
 
 		if ( isset( $_POST['deleteall'] ) && check_admin_referer( 'redirection-process_logs' ) ) {
 			RE_404::delete_all();
@@ -293,7 +292,7 @@ class Redirection extends Redirection_Plugin {
 	}
 
 	function admin_groups( $module ) {
-		include dirname(__FILE__) . '/models/pager.php';
+		include dirname( __FILE__ ).'/models/pager.php';
 
 		if ( isset( $_POST['add'] ) && check_admin_referer( 'redirection-add_group' ) ) {
 			if ( Red_Group::create( stripslashes_deep( $_POST ) ) ) {
@@ -318,7 +317,7 @@ class Redirection extends Redirection_Plugin {
 	}
 
 	function admin_redirects( $group ) {
-		include dirname(__FILE__) . '/models/pager.php';
+		include dirname( __FILE__ ).'/models/pager.php';
 
 		if ( $group == 0 )
 			$group = Red_Group::get_first_id();

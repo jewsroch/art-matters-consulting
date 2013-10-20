@@ -10,7 +10,7 @@
  */
 
 if ( ! class_exists( 'WPCC_Sign_On' ) )
-	require_once(dirname(__FILE__) . '/wpcc/wpcc-sign-on.php');
+	require_once( dirname( __FILE__ ) . '/wpcc/wpcc-sign-on.php' );
 
 add_action( 'jetpack_modules_loaded', 'jetpack_wpcc_loaded' );
 function jetpack_wpcc_loaded() {

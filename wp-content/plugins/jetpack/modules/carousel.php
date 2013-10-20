@@ -9,4 +9,4 @@
  * Auto Activate: No
  */
 
-include dirname(__FILE__) . '/carousel/jetpack-carousel.php';
+include dirname( __FILE__ ) . '/carousel/jetpack-carousel.php';

@@ -402,11 +402,11 @@ jQuery(document).ready( function($) {
 			break;
 
 		case 'feedback_date':
-			
+
 			$date_time_format = _x( '%1$s \a\t %2$s', '{$date_format} \a\t {$time_format}', 'jetpack' );
 			$date_time_format = sprintf( $date_time_format, get_option( 'date_format' ), get_option( 'time_format' ) );
 			$time = date_i18n( $date_time_format, get_the_time( 'U' ) );
-		
+
 			echo $time;
 			break;
 	}
@@ -533,7 +533,7 @@ function grunion_ajax_spam() {
 	if ( !current_user_can("edit_page", $post_id) )
 		wp_die( __( 'You are not allowed to manage this item.', 'jetpack' ) );
 
-	require_once dirname(__FILE__) . '/grunion-contact-form.php';
+	require_once dirname( __FILE__ ) . '/grunion-contact-form.php';
 
 	$current_menu = '';
 	if ( preg_match( '|post_type=feedback|', $_POST['sub_menu'] ) ) {

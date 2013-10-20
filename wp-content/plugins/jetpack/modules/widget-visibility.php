@@ -8,4 +8,4 @@
  * Auto Activate: Yes
  */
 
-include dirname(__FILE__) . "/widget-visibility/widget-conditions.php";
+include dirname( __FILE__ ) . "/widget-visibility/widget-conditions.php";
