@@ -15,3 +15,5 @@
 /wp-content/backups/
 /sitemap.xml
 /sitemap.xml.gz
+/wp-admin/error_log
+/wp-content/w3tc-config
