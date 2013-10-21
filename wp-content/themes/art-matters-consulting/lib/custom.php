@@ -203,3 +203,8 @@ function list_shortcode( $atts, $content = null ) {
     return ob_get_clean();
 }
 add_shortcode('checked_list', 'list_shortcode');
+
+function wrong_login() {
+    return 'Wrong username or password.';
+}
+add_filter('login_errors', 'wrong_login');
