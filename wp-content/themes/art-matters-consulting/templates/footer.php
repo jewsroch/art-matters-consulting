@@ -33,9 +33,13 @@
 
             </div>
             <div class="col-xs-12 col-sm-4 footer-icon">
+                <div class="footer-social">
+                    <a href="#" class="amc-icon-social-facebook-circular"></a>
+                    <a href="#" class="amc-icon-social-twitter-circular"></a>
+                    <a href="#" class="amc-icon-social-linkedin-circular"></a>
+                </div>
                 <a href="">
-                    <h3><?php bloginfo('name'); ?></h3>
-                    <h5>&copy; <?php echo date('Y'); ?></h5>
+                    <h5>&copy; <?php echo date('Y'); ?> - <?php bloginfo('name'); ?></h5>
                 </a>
             </div>
         </div>
