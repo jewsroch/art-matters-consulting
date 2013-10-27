@@ -1,8 +1,9 @@
 <header class="navbar navbar-static-top">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 logo col-md-12">
-                <a class="logo" href="<?php echo get_site_url() ?>"><img src="<?php echo get_template_directory_uri() ?>/assets/img/logo.png" alt="Art Matters Consulting"/></a>
+            <div class="col-lg-3 col-md-12">
+                <a class="logo" href="<?php echo get_site_url() ?>"><span class="logo-svg"></span></a>
+<!--                <img src="--><?php //echo get_template_directory_uri() ?><!--/assets/img/logo.png" alt="Art Matters Consulting"/>-->
             </div>
             <div class="nav-container col-sm-12 col-md-12 col-lg-9">
                 <?php
