@@ -30,12 +30,19 @@
     <?php } ?>
 
     <?php // Optional Page Thumbnail
-    if (has_post_thumbnail($post->ID) && is_page()) {?>
+
+    $slider = get_post_meta($post->ID, 'slider', true);
+
+    if ((has_post_thumbnail($post->ID) || $slider != '') && is_page()) {?>
         <div class="full-width-image">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <?php echo get_the_post_thumbnail($post->ID,'responsive-wide', array('class' => 'top-image img-responsive img-rounded')) ?>
+                        <?php if ($slider != '') {
+                            echo do_shortcode("[metaslider id=" . $slider . "]");
+                        } else {
+                             echo get_the_post_thumbnail($post->ID,'responsive-wide', array('class' => 'top-image img-responsive img-rounded'));
+                        }?>
                     </div>
                 </div>
             </div>
