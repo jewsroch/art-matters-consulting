@@ -39,7 +39,7 @@ var AMC = {
 
         // Toggle on load
         if ($(window).width() < 768) {
-            $('.nav-container').slideUp(400);
+            $('.nav-container').delay(1000).slideUp(1000);
         } else {
             $('.nav-container').show();
         }
