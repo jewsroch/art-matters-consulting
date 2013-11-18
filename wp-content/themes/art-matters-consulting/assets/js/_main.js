@@ -39,7 +39,7 @@ var AMC = {
 
         // Toggle on load
         if ($(window).width() < 768) {
-            $('.nav-container').delay(1000).slideUp(1000);
+            $('.nav-container').delay(1000).slideUp(200);
         } else {
             $('.nav-container').show();
         }
@@ -54,7 +54,7 @@ var AMC = {
         });
 
         $('.navbar-toggle').click(function() {
-            $('.nav-container').slideToggle(150);
+            $('.nav-container').slideToggle(200);
         });
 
     },
