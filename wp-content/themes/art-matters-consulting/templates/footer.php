@@ -25,19 +25,25 @@
                 wp_nav_menu( $defaults );
 
                 $styleGuide = get_page_by_title('Style Guide');
-//                var_dump($styleGuide);
                 if (is_user_logged_in() && isset($styleGuide) ) {
                     echo '<a href="' . get_permalink($styleGuide->ID) . '">Style Guide</a>';
                 }
                 ?>
 
             </div>
+
+            <?php $opts = get_option('amc_options'); ?>
             <div class="col-xs-12 col-sm-4 footer-icon">
+                <?php if($opts['social_show']) { ?>
                 <div class="footer-social">
-                    <a href="#" class="amc-icon-social-facebook-circular"></a>
-                    <a href="#" class="amc-icon-social-twitter-circular"></a>
-                    <a href="#" class="amc-icon-social-linkedin-circular"></a>
+                    <?php
+                    echo ($opts['facebook_link'] != '') ? '<a href="' . esc_attr($opts['facebook_link']) . '" class="amc-icon-social-facebook-circular"></a>' : '' ;
+                    echo ($opts['twitter_link'] != '') ? '<a href="' . esc_attr($opts['twitter_link']) . '" class="amc-icon-social-twitter-circular"></a>' : '' ;
+                    echo ($opts['linkedin_link'] != '') ? '<a href="' . esc_attr($opts['linkedin_link']) . '" class="amc-icon-social-linkedin-circular"></a>' : '' ;
+                    ?>
                 </div>
+                <?php } ?>
+
                 <a href="">
                     <h5>&copy; <?php echo date('Y'); ?> - <?php bloginfo('name'); ?></h5>
                 </a>
