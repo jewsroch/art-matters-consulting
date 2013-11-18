@@ -4,6 +4,12 @@
             <div class="col-lg-3 col-md-12">
                 <a class="logo" href="<?php echo get_site_url() ?>"><span class="logo-svg"></span></a>
 <!--                <img src="--><?php //echo get_template_directory_uri() ?><!--/assets/img/logo.png" alt="Art Matters Consulting"/>-->
+                <button class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
             </div>
             <div class="nav-container col-sm-12 col-md-12 col-lg-9">
                 <?php

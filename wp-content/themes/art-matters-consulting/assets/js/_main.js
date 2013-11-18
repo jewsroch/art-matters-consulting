@@ -1,7 +1,7 @@
 // Modified http://paulirish.com/2009/markup-based-unobtrusive-comprehensive-dom-ready-execution/
 // Only fires on body class (working off strictly WordPress body_class)
 
-var ExampleSite = {
+var AMC = {
   // All pages
   common: {
     init: function() {
@@ -29,13 +29,33 @@ var ExampleSite = {
                 }
             }
             function updateSize() {
-                testDrive.style.fontSize = fontSize.value + 'px';
+//                testDrive.style.fontSize = fontSize.value + 'px';
             }
-            fontSize.addEventListener('change', updateSize, false);
-            testText.addEventListener('input', updateTest, false);
-            testText.addEventListener('change', updateTest, false);
+//            fontSize.addEventListener('change', updateSize, false);
+//            testText.addEventListener('input', updateTest, false);
+//            testText.addEventListener('change', updateTest, false);
             updateSize();
         }());
+
+        // Toggle on load
+        if ($(window).width() < 768) {
+            $('.nav-container').slideUp(400);
+        } else {
+            $('.nav-container').show();
+        }
+
+        // Toggle on resize
+        $(window).resize(function() {
+            if ($(window).width() < 768) {
+                $('.nav-container').slideUp(500);
+            } else {
+                $('.nav-container').show(500);
+            }
+        });
+
+        $('.navbar-toggle').click(function() {
+            $('.nav-container').slideToggle(150);
+        });
 
     },
     finalize: function() { }
@@ -56,7 +76,7 @@ var ExampleSite = {
 
 var UTIL = {
   fire: function(func, funcname, args) {
-    var namespace = ExampleSite;
+    var namespace = AMC;
     funcname = (funcname === undefined) ? 'init' : funcname;
     if (func !== '' && namespace[func] && typeof namespace[func][funcname] === 'function') {
       namespace[func][funcname](args);
