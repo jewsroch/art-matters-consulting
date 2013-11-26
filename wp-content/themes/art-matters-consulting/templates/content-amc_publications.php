@@ -3,11 +3,11 @@
     <div class="row publication">
         <article class="col-sm-12 well ">
             <header>
-                <h3 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                <h3 class="entry-title"><?php the_title(); ?></h3>
                 <?php // get_template_part('templates/entry-meta'); ?>
             </header>
             <div class="row">
-                <div class="col-xs-6 text-center col-sm-3 <?php echo (get_the_ID() % 2 == 0) ? 'pull-right': ''; ?>">
+                <div class="col-xs-6 text-center col-sm-3">
                     <a target="_blank" href="<?php echo $cf['pub_dl_link']['0'] == '' ? esc_url($cf['pub_url']['0']) : esc_url($cf['pub_dl_link']['0']); ?>">
                     <?php the_post_thumbnail('publication', array(
                         'class' => 'img-responsive img-rounded publication-image',
