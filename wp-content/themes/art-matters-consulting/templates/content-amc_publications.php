@@ -28,9 +28,7 @@
                                 <?php if ($cf['pub_source']['0'] != ''){ ?>
                                     <dt><span class="glyphicon glyphicon-book"></span></dt>
                                     <dd>
-                                        <a target="_blank" href="<?php echo esc_url($cf['pub_url'][0]); ?>">
                                             <?php echo esc_attr($cf['pub_source']['0']); ?>
-                                        </a>
                                     </dd>
                                 <?php } ?>
 
