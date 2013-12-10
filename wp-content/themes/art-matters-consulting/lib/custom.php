@@ -65,29 +65,15 @@ function line_shortcode( $atts ) {
 }
 add_shortcode('line', 'line_shortcode');
 
-function full_width_buttons_shortcode( $atts, $content = null ) {
+function full_width_list_left_shortcode( $atts, $content = null ) {
     extract( shortcode_atts(
             array(
-                'button1text' => 'Button 1',
-                'button1url' => '#',
-                'button2text' => 'Button 2',
-                'button2url' => '#',
+                'button_text' => 'Button 1',
+                'button_url' => '#',
             ), $atts )
     );
 
     ob_start(); ?>
-        </div>
-        <div class="full-width-buttons">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-5 col-md-4 col-md-offset-1 col-sm-offset-1 col-xs-12">
-                        <a href="<?php echo $button1url; ?>" class="btn btn-block btn-primary btn-lg btn-amc"><?php echo $button1text; ?></a>
-                    </div>
-                    <div class="col-sm-5 col-md-4 col-md-offset-2 col-xs-12">
-                        <a href="<?php echo $button2url; ?>" class="btn btn-block btn-primary btn-lg btn-amc"><?php echo $button2text; ?></a>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="full-width-stripes-blue hidden-xs">
             <div class="full-with blue-light"></div>
@@ -95,22 +81,39 @@ function full_width_buttons_shortcode( $atts, $content = null ) {
             <div class="full-with blue-light"></div>
             <div class="full-with blue-light"></div>
         </div>
-        <div class="container">
+        <div class="full-width-buttons">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-5 col-md-4 col-md-offset-1 col-sm-offset-1 col-xs-12 button-list">
+                        <a href="<?php echo $button_url; ?>" class="btn btn-block btn-primary btn-lg btn-amc"><?php echo $button_text; ?></a>
+                        <?php echo do_shortcode($content); ?>
+                    </div>
     <?php
     return ob_get_clean();
 }
-add_shortcode('full_width_buttons', 'full_width_buttons_shortcode');
+add_shortcode('full_width_list_left', 'full_width_list_left_shortcode');
 
-function button_list_left_shortcode( $atts, $content = null ) {
+function full_width_list_right_shortcode( $atts, $content = null ) {
+    extract( shortcode_atts(
+            array(
+                 'button_text' => 'Button 2',
+                 'button_url' => '#',
+            ), $atts )
+    );
 
     ob_start();?>
-        <div class="col-sm-5 col-md-4 col-md-offset-1 col-sm-offset-1 col-xs-12 button-list">
-            <?php echo do_shortcode($content); ?>
+                    <div class="col-sm-5 col-md-4 col-md-offset-2 col-xs-12 button-list">
+                        <a href="<?php echo $button_url; ?>" class="btn btn-block btn-primary btn-lg btn-amc"><?php echo $button_text; ?></a>
+                        <?php echo do_shortcode($content); ?>
+                    </div>
+                </div>
+            </div>
         </div>
+    <div class="container">
     <?php
     return ob_get_clean();
 }
-add_shortcode('button_list_left', 'button_list_left_shortcode');
+add_shortcode('full_width_list_right', 'full_width_list_right_shortcode');
 
 function button_list_right_shortcode( $atts, $content = null ) {
 
