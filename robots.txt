@@ -1,0 +1,4 @@
+User-Agent: *
+Disallow:
+Disallow: /author
+Disallow: /author/zoverley/‎
