@@ -5,7 +5,7 @@
  * @author Ade WALKER  (email : info@studiograsshopper.ch)
  * @copyright Copyright 2010-2013
  * @package custom_taxonomies_menu_widget
- * @version 1.3
+ * @version 1.3.1
  *
  *
  * @since 1.0
