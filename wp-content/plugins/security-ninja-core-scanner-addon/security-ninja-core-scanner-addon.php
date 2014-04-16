@@ -4,7 +4,7 @@ Plugin Name: Security Ninja - Core Scanner add-on
 Plugin URI: http://security-ninja.webfactoryltd.com/core-scanner/
 Description: Scan your WordPress core files to ensure they are intact and exploit free!
 Author: Web factory Ltd
-Version: 1.45
+Version: 1.70
 Author URI: http://www.webfactoryltd.com/
 */
 
@@ -14,7 +14,7 @@ if (!function_exists('add_action')) {
 }
 
 
-define('WF_SN_CS_VER', '1.45');
+define('WF_SN_CS_VER', '1.70');
 define('WF_SN_CS_OPTIONS_KEY', 'wf_sn_cs_results');
 define('WF_SN_CS_SALT', 'monkey');
 
@@ -320,7 +320,7 @@ class wf_sn_cs {
       die('can\'t write to file.');
     }
 
-    $org_file = wp_remote_get('http://core.trac.wordpress.org/browser/tags/' . get_bloginfo('version') . '/' . $file . '?format=txt');
+    $org_file = wp_remote_get('http://core.trac.wordpress.org/browser/tags/' . get_bloginfo('version') . '/src/' . $file . '?format=txt');
     if (!$org_file['body']) {
       die('can\'t download remote file source.');
     }
