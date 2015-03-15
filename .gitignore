@@ -17,3 +17,4 @@
 /sitemap.xml.gz
 /wp-admin/error_log
 /wp-content/w3tc-config
+.DS_Store
