@@ -1,11 +1,11 @@
 
 === iThemes Security (formerly Better WP Security) ===
-Contributors: ithemes, ChrisWiegman, mattdanner, chrisbliss18
+Contributors: ithemes, ChrisWiegman, mattdanner, chrisjean
 Donate link: http://ithemes.com
 Tags: security, secure, multi-site, network, mu, login, lockdown, htaccess, hack, header, cleanup, ban, restrict, access, protect, protection, disable, images, image, hotlink, admin, username, database, prefix, wp-content, rename, directory, directories, secure, SSL, iThemes, BackupBuddy, Exchange, iThemes Exchange
 Requires at least: 3.8
 Tested up to: 3.9
-Stable tag: 4.0.23
+Stable tag: 4.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -160,6 +160,56 @@ Free support may be available with the help of the community in the <a href="htt
 5. Easy-to-navigate Security dashboard
 
 == Changelog ==
+
+= 4.1.5 =
+* Miscelaneous typos and other fixes
+* Remove extra file lock on saving .htaccess, nginx.conf and wp-config.php. Only flock will be used in these operations
+* Fixed a function not found error in the brute force module
+* Improved content filtering in SSL so that more images and other content will link with appropriate protocol.
+* Fixed hide backend in cases where a lockout has expired
+* Miscelaneous typos and other fixes.
+
+= 4.1.3 =
+* Make sure "remove write permissions" works
+* Better descriptions on white list
+* Add pro table of contents if needed
+* Make sure security admin bar item works
+* Make sure lockout message only happens when needed
+* Suppress errors on readlink calls
+* Make sure class is present for permanent ban
+* Make sure white list is an array
+* Fix white listed IPs not working
+* Log when Away-mode is triggered
+* Make sure away mode file isn't accidently deleted
+* Make sure away mode doesn't even allow access to the login form (as it didn't in 3.x)
+* Enhance warnings on "Change content directory" settings
+* Better descriptions on white lists
+* Fixed XMLRPC label
+* Better XMLRPC Dashboard status
+* Don't allow logout action on wp-login.php with hide backend
+* Better check for variable in SSL admin
+
+= 4.0.27 =
+* XMLRPC soft block should now work with WordPress mobile app
+* Make sure uploads directory is only working in blog 1 in multisite
+* Better checks for run method in module loader
+
+= 4.0.25 =
+* Make sure backup directory is present before trying to use it
+* Make sure backup file method is respected on all backup operations
+* Added ability to limit number of backups saved to disk
+* Minor typo and other fixes
+* Only load front-end classes as needed
+* Add link to free support at .org forums
+* Remove select(?ed) from suspicious query strings for 3.9 compatibility
+* Fixed domain mapping issue (requires http://wordpress.org/plugins/wordpress-mu-domain-mapping/ domain mapping plugin)
+* Remove array type errors on 404 pages
+* Remove remaining create function calls
+* Make sure logs directory is present before trying to use it
+* Log a message when witelisted host triggers a lockout
+* Don't create log files if they're not going to be used
+* Add pro tab if pro modules need it
+* Upgrade module loader to only load what is needed
 
 = 4.0.23 =
 * Fix sorting by count in 404 Logs
@@ -1027,5 +1077,5 @@ This release is a complete rewrite from the ground up. Special thanks to Cory Mi
 
 == Upgrade Notice ==
 
-= 4.0.23 =
-Better WP Security is now iThemes Security with new features and a greatly improved code base. We recommend disabling Better WP Security before upgrading to 4.0.23 if you are not already on 4.0 or greater.
+= 4.1.5 =
+Better WP Security is now iThemes Security with new features and a greatly improved code base. We recommend disabling Better WP Security before upgrading to 4.1.5 if you are not already on 4.0 or greater.

@@ -4,7 +4,7 @@ Tags: wordpress slideshow,seo,slideshow,slider,widget,wordpress slider,image sli
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CQ84KC4X8YKW8
 Requires at least: 3.5
 Tested up to: 3.8
-Stable tag: 2.7.2
+Stable tag: 2.8-beta
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,13 +105,11 @@ You will need to paste the "Template Include" code into your theme (you can find
 * Find the correct place to add it (for example above or below the logo)
 * Paste in the code and save.
 
-If you want to include the slideshow on your homepage only, use this code:
+= I only want to show the slideshow on my homepage, how can I do that? =
 
-`<?php
-if (is_front_page() || is_home()) {
-    echo do_shortcode("[metaslider id=123]"); //replace 123 with slider ID
-}
-?>`
+Add the 'restrict_to' parameter to the shortcode, eg:
+
+`[metaslider id=XXX restrict_to=home]");`
 
 Theme specific instructions:
 
@@ -138,7 +136,16 @@ See www.metaslider.com/documentation/image-cropping/
 
 == Changelog ==
 
-= 2.8-beta [16 / 04 / 14] =
+= 2.8 [28/04/14] =
+
+* New feature: Russian Language Pack added
+* Fix: Carousel image scaling in FireFox
+* Fix: wpautop issue with double ampersand
+* New feature: Shortcode parameter added to restrict slideshow to displaying on homepage only (see FAQ)
+* Improvement: Save slideshow after reordering slides
+* Fix: PHP Warning when no slideshows have been created
+
+= 2.8-beta [16/04/14] =
 
 * Improvement: Preview now uses admin-post action
 * Improvement: Classes are now auto loaded to reduce memory footprint

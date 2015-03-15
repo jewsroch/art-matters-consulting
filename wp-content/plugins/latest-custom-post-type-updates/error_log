@@ -1,0 +1,2 @@
+[29-May-2014 03:57:50 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home2/artmc/public_html/wp-content/plugins/latest-custom-post-type-updates/index.php on line 261
+[29-May-2014 03:59:10 America/Chicago] PHP Fatal error:  Call to undefined function add_action() in /home2/artmc/public_html/wp-content/plugins/latest-custom-post-type-updates/index.php on line 261

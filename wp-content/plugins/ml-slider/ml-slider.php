@@ -5,7 +5,7 @@
  * Plugin Name: Meta Slider
  * Plugin URI:  http://www.metaslider.com
  * Description: Easy to use slideshow plugin. Create SEO optimised responsive slideshows with Nivo Slider, Flex Slider, Coin Slider and Responsive Slides.
- * Version:     2.8-beta
+ * Version:     2.8
  * Author:      Matcha Labs
  * Author URI:  http://www.matchalabs.com
  * License:     GPL-2.0+
@@ -31,7 +31,7 @@ class MetaSliderPlugin {
     /**
      * @var string
      */
-    public $version = '2.8-beta';
+    public $version = '2.8';
 
 
     /**
@@ -288,6 +288,11 @@ class MetaSliderPlugin {
             return false;
         }
 
+        // handle [metaslider id=123 restrict_to=home]
+        if ( isset( $atts['restrict_to'] ) && $atts['restrict_to'] == 'home' && ! is_front_page() ) {
+            return;
+        }
+
         // we have an ID to work with
         $slider = get_post( $atts['id'] );
 
@@ -468,9 +473,16 @@ class MetaSliderPlugin {
                 );
             }
 
-            if ( isset( $tabs['nextgen'] ) ) unset( $tabs['nextgen'] );
+            if ( isset( $tabs['nextgen'] ) ) 
+                unset( $tabs['nextgen'] );
 
-            return array_merge( $tabs, $newtabs );
+
+            if ( is_array( $tabs ) ) {
+                return array_merge( $tabs, $newtabs );
+            } else {
+                return $newtabs;
+            }
+            
         }
 
         return $tabs;
@@ -879,16 +891,17 @@ class MetaSliderPlugin {
         $this->upgrade_to_pro_cta();
         $this->do_system_check();
         $max_tabs = apply_filters( 'metaslider_max_tabs', 0 );
-
+        $slider_id = $this->slider ? $this->slider->id : 0;
+        
         ?>
 
         <script type='text/javascript'>
-            var metaslider_slider_id = <?php echo $this->slider->id; ?>;
+            var metaslider_slider_id = <?php echo $slider_id; ?>;
             var metaslider_pro_active = <?php echo function_exists( 'is_plugin_active' ) && is_plugin_active( 'ml-slider-pro/ml-slider-pro.php' ) ? 'true' : 'false' ?>;
         </script>
 
         <div class="wrap metaslider">
-            <form accept-charset="UTF-8" action="?page=metaslider&amp;id=<?php echo $this->slider->id ?>" method="post">
+            <form accept-charset="UTF-8" action="?page=metaslider&amp;id=<?php echo $slider_id ?>" method="post">
                 <?php
                     if ( $this->slider ) {
                         wp_nonce_field( 'metaslider_save_' . $this->slider->id );

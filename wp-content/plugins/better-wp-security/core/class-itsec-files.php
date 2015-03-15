@@ -16,7 +16,8 @@ final class ITSEC_Files {
 		$rewrite_rules,
 		$wpconfig_rules,
 		$rewrites_changed,
-		$config_changed;
+		$config_changed,
+		$write_files;
 
 	/**
 	 * Create and manage wp_config.php or .htaccess/nginx rewrites.
@@ -35,6 +36,19 @@ final class ITSEC_Files {
 		$this->config_changed   = false;
 		$this->rewrite_rules    = array();
 		$this->wpconfig_rules   = array();
+
+		//look for the tweaks module to see if we should reset to 0444
+		$tweaks = get_site_option( 'itsec_tweaks' );
+
+		if ( $tweaks !== false && isset( $tweaks['write_permissions'] ) ) {
+
+			$this->write_files = $tweaks['write_permissions'];
+
+		} else {
+
+			$this->write_files = false;
+
+		}
 
 		//Add the metabox
 		add_action( 'itsec_add_admin_meta_boxes', array( $this, 'add_admin_meta_boxes' ) );
@@ -294,7 +308,7 @@ final class ITSEC_Files {
 		//Make sure we can write to the file
 		$perms = substr( sprintf( '%o', @fileperms( $htaccess_file ) ), - 4 );
 
-		if ( $perms == '0444' ) {
+		if ( $perms == '0444' || $this->write_files === true ) {
 			@chmod( $htaccess_file, 0664 );
 		}
 
@@ -343,7 +357,7 @@ final class ITSEC_Files {
 		}
 
 		//reset file permissions if we changed them
-		if ( $perms == '0444' ) {
+		if ( $perms == '0444' || $this->write_files === true ) {
 			@chmod( $htaccess_file, 0444 );
 		}
 
@@ -429,8 +443,8 @@ final class ITSEC_Files {
 			return true;
 		}
 
-		$lock_file    = $itsec_globals['ithemes_dir'] . '/' . sanitize_text_field( $lock_file ) . '.lock';
-		$dir_age      = @filectime( $lock_file );
+		$lock_file = $itsec_globals['ithemes_dir'] . '/' . sanitize_text_field( $lock_file ) . '.lock';
+		$dir_age   = @filectime( $lock_file );
 
 		if ( @mkdir( $lock_file ) === false ) {
 
@@ -589,8 +603,21 @@ final class ITSEC_Files {
 
 				@fclose( $f );
 
+				//look for the tweaks module to see if we should reset to 0444
+				$tweaks = get_site_option( 'itsec_tweaks' );
+
+				if ( $tweaks !== false && isset( $tweaks['write_permissions'] ) ) {
+
+					$write_files = $tweaks['write_permissions'];
+
+				} else {
+
+					$write_files = false;
+
+				}
+
 				//reset file permissions if we changed them
-				if ( $perms == '0444' ) {
+				if ( $perms == '0444' || $write_files === true ) {
 					@chmod( $htaccess_file, 0444 );
 				}
 
@@ -737,56 +764,36 @@ final class ITSEC_Files {
 
 		if ( ITSEC_Lib::get_server() == 'nginx' || ( isset( $itsec_globals['settings']['write_files'] ) && $itsec_globals['settings']['write_files'] === true ) ) {
 
-			if ( $this->get_file_lock( 'htaccess' ) ) {
+			$success = $this->write_rewrites(); //save the return value for success/error flag
 
-				$success = $this->write_rewrites(); //save the return value for success/error flag
+			if ( $success === true ) {
 
-				$release = $this->release_file_lock( 'htaccess' );
-
-				if ( $success === true && $release === true ) {
-
-					if ( ITSEC_Lib::get_server() == 'nginx' ) {
-
-						return array(
-							'success' => true,
-							'text'    => sprintf(
-								'%s %s. %s',
-								__( 'Your rewrite rules have been saved to', 'it-l10n-better-wp-security' ),
-								$itsec_globals['settings']['nginx_file'],
-								__( 'You must restart your NGINX server for the settings to take effect', 'it-l10n-better-wp-security' )
-							),
-						);
-
-					} else {
-
-						return array(
-							'success' => true,
-							'text'    => true,
-						);
-
-					}
-
-				} elseif ( $success === true ) {
+				if ( ITSEC_Lib::get_server() == 'nginx' ) {
 
 					return array(
-						'success' => false,
-						'text'    => __( 'It looks like we have not been able to release the lock file on your computer. Most likely this is due to folder permissions on your computer. You can manually delete and folders with the ".lock" extension in ', 'it-l10n-better-wp-security' ) . $itsec_globals['ithemes_dir'] . __( ' and make sure that the folder allows for the creation AND deletion of subfolders. If the issue continues please contact your web host. This message is advisory only and should not affect the functionality of the plugin.', 'it-l10n-better-wp-security' ),
+						'success' => true,
+						'text'    => sprintf(
+							'%s %s. %s',
+							__( 'Your rewrite rules have been saved to', 'it-l10n-better-wp-security' ),
+							$itsec_globals['settings']['nginx_file'],
+							__( 'You must restart your NGINX server for the settings to take effect', 'it-l10n-better-wp-security' )
+						),
 					);
 
 				} else {
 
 					return array(
-						'success' => false,
-						'text'    => __( 'Unable to write to your .htaccess or nginx.conf file. If the problem persists contact support.', 'it-l10n-better-wp-security' ),
+						'success' => true,
+						'text'    => true,
 					);
 
 				}
 
-			} else { //return false if we can't get a file lock
+			} else {
 
 				return array(
 					'success' => false,
-					'text'    => __( 'WordPress was unable to save the your options to .htaccess or nginx.conf file. It looks like another process might already be working on the file. Please wait a few minutes and try again or contact support if the problem persists.', 'it-l10n-better-wp-security' ),
+					'text'    => __( 'Unable to write to your .htaccess or nginx.conf file. If the problem persists contact support.', 'it-l10n-better-wp-security' ),
 				);
 
 			}
@@ -828,40 +835,20 @@ final class ITSEC_Files {
 
 		if ( isset( $itsec_globals['settings']['write_files'] ) && $itsec_globals['settings']['write_files'] === true ) {
 
-			if ( $this->get_file_lock( 'wpconfig' ) ) {
+			$success = $this->write_wpconfig(); //save the return value for success/error flag
 
-				$success = $this->write_wpconfig(); //save the return value for success/error flag
+			if ( $success === true ) {
 
-				$release = $this->release_file_lock( 'wpconfig' );
+				return array(
+					'success' => true,
+					'text'    => true,
+				);
 
-				if ( $success === true && $release === true ) {
-
-					return array(
-						'success' => true,
-						'text'    => true,
-					);
-
-				} elseif ( $success === true && $release === false ) {
-
-					return array(
-						'success' => false,
-						'text'    => __( 'Unable to release a lock on your wp-config.php file. If the problem persists contact support.', 'it-l10n-better-wp-security' ),
-					);
-
-				} else {
-
-					return array(
-						'success' => false,
-						'text'    => __( 'Unable to write to your wp-config.php file. If the problem persists contact support.', 'it-l10n-better-wp-security' ),
-					);
-
-				}
-
-			} else { //return false if we can't get a file lock
+			} else {
 
 				return array(
 					'success' => false,
-					'text'    => __( 'WordPress was unable to save the your options to wp-config.php. It looks like another process might already be working on the file. Please wait a few minutes and try again or contact support if the problem persists.', 'it-l10n-better-wp-security' ),
+					'text'    => __( 'Unable to write to your wp-config.php file. If the problem persists contact support.', 'it-l10n-better-wp-security' ),
 				);
 
 			}
@@ -1095,7 +1082,7 @@ final class ITSEC_Files {
 				if ( ! @file_put_contents( $htaccess_file, $htaccess_contents, LOCK_EX ) ) {
 
 					//reset file permissions if we changed them
-					if ( $perms == '0444' ) {
+					if ( $perms == '0444' || $this->write_files === true ) {
 						@chmod( $htaccess_file, 0444 );
 					}
 
@@ -1104,7 +1091,7 @@ final class ITSEC_Files {
 				}
 
 				//reset file permissions if we changed them
-				if ( $perms == '0444' ) {
+				if ( $perms == '0444' || $this->write_files === true ) {
 					@chmod( $htaccess_file, 0444 );
 				}
 
@@ -1260,7 +1247,7 @@ final class ITSEC_Files {
 			if ( ! @file_put_contents( $config_file, $config_contents, LOCK_EX ) ) {
 
 				//reset file permissions if we changed them
-				if ( $perms == '0444' ) {
+				if ( $perms == '0444' || $this->write_files === true ) {
 					@chmod( $config_file, 0444 );
 				}
 
@@ -1268,7 +1255,7 @@ final class ITSEC_Files {
 			}
 
 			//reset file permissions if we changed them
-			if ( $perms == '0444' ) {
+			if ( $perms == '0444' || $this->write_files === true ) {
 				@chmod( $config_file, 0444 );
 			}
 

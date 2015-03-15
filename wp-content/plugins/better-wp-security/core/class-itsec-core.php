@@ -22,6 +22,7 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 			$tooltip_modules,
 			$one_click,
 			$pages,
+			$pro_toc_items,
 			$tracking_vars,
 			$toc_items;
 
@@ -49,7 +50,27 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 			$this->tooltip_modules = array(); //initialize tooltip modules.
 			$this->one_click       = array(); //initialize one-click settings
 
-			$upload_dir = wp_upload_dir(); //get the full upload directory array so we can grab the base directory.
+			if ( get_site_transient( 'itsec_upload_dir' ) === false ) {
+
+				if ( is_multisite() ) {
+
+					switch_to_blog( 1 );
+					$upload_dir = wp_upload_dir(); //get the full upload directory array so we can grab the base directory.
+					restore_current_blog();
+
+				} else {
+
+					$upload_dir = wp_upload_dir(); //get the full upload directory array so we can grab the base directory.
+
+				}
+
+				set_site_transient( 'itsec_upload_dir', $upload_dir, 86400 );
+
+			} else {
+
+				$upload_dir = get_site_transient( 'itsec_upload_dir' );
+
+			}
 
 			//Set plugin defaults
 			$itsec_globals = array(
@@ -68,27 +89,110 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 				'current_time_gmt'   => current_time( 'timestamp', 1 ), //the current gmt time in unix timestamp format
 				'settings'           => get_site_option( 'itsec_global' ),
 				'free_modules'       => array(
-					'four-oh-four',
-					'admin-user',
-					'away-mode',
-					'ban-users',
-					'brute-force',
-					'backup',
-					'file-change',
-					'hide-backend',
-					'ssl',
-					'strong-passwords',
-					'tweaks',
-					'content-directory',
-					'database-prefix',
-					'help',
-					'core',
+					'four-oh-four'      => array(
+						'has_front' => true,
+						'option'    => 'itsec_four_oh_four',
+						'setting'   => 'enabled',
+						'value'     => true,
+						'class_id'  => 'Four_Oh_Four',
+					),
+					'admin-user'        => array(
+						'has_front' => false,
+						'class_id'  => 'Admin_User',
+					),
+					'away-mode'         => array(
+						'has_front' => true,
+						'option'    => 'itsec_away_mode',
+						'setting'   => 'enabled',
+						'value'     => true,
+						'class_id'  => 'Away_Mode',
+					),
+					'ban-users'         => array(
+						'has_front' => true,
+						'option'    => 'itsec_global',
+						'setting'   => 'blacklist',
+						'value'     => true,
+						'class_id'  => 'Ban_Users',
+					),
+					'brute-force'       => array(
+						'has_front' => true,
+						'option'    => 'itsec_brute_force',
+						'setting'   => 'enabled',
+						'value'     => true,
+						'class_id'  => 'Brute_Force',
+					),
+					'backup'            => array(
+						'has_front' => true,
+						'option'    => 'itsec_backup',
+						'setting'   => 'enabled',
+						'value'     => true,
+						'class_id'  => 'Backup',
+					),
+					'file-change'       => array(
+						'has_front' => true,
+						'option'    => 'itsec_file_change',
+						'setting'   => 'enabled',
+						'value'     => true,
+						'class_id'  => 'File_Change',
+					),
+					'hide-backend'      => array(
+						'has_front' => true,
+						'option'    => 'itsec_hide_backend',
+						'setting'   => 'enabled',
+						'value'     => true,
+						'class_id'  => 'Hide_Backend',
+					),
+					'ssl'               => array(
+						'has_front' => true,
+						'option'    => 'itsec_ssl',
+						'setting'   => 'frontend',
+						'value'     => array( 1, 2 ),
+						'class_id'  => 'SSL',
+					),
+					'strong-passwords'  => array(
+						'has_front' => true,
+						'option'    => 'itsec_strong_passwords',
+						'setting'   => 'enabled',
+						'value'     => true,
+						'class_id'  => 'Strong_Passwords',
+					),
+					'tweaks'            => array(
+						'has_front' => true,
+						'class_id'  => 'Tweaks',
+					),
+					'content-directory' => array(
+						'has_front' => false,
+						'class_id'  => 'Content_Directory',
+					),
+					'database-prefix'   => array(
+						'has_front' => false,
+						'class_id'  => 'Database_Prefix',
+					),
+					'help'              => array(
+						'has_front' => false,
+						'class_id'  => 'Help',
+					),
+					'core'              => array(
+						'has_front' => false,
+						'class_id'  => 'Core',
+					),
 				),
 				'pro_modules'        => array(
-					'help',
-					'core',
+					'help' => array(
+						'has_front' => false,
+						'class_id'  => 'Help',
+					),
+					'core' => array(
+						'has_front' => false,
+						'class_id'  => 'Core',
+					),
 				),
 			);
+
+			$free_modules_folder = $itsec_globals['plugin_dir'] . 'modules/free';
+			$pro_modules_folder  = $itsec_globals['plugin_dir'] . 'modules/pro';
+
+			$itsec_globals['has_pro'] = is_dir( $pro_modules_folder );
 
 			$this->pages = array(
 				array(
@@ -116,6 +220,17 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 					'has_tab'  => true,
 				),
 			);
+
+			if ( isset( $itsec_globals['has_pro'] ) && $itsec_globals['has_pro'] === true && sizeof( $itsec_globals['pro_modules'] ) > 2 ) {
+
+				$this->pages[] = array(
+					'priority' => 8,
+					'title'    => __( 'Pro', 'it-l10n-better-wp-security' ),
+					'slug'     => 'pro',
+					'has_tab'  => true,
+				);
+
+			}
 
 			if ( class_exists( 'backupbuddy_api0' ) ) {
 
@@ -256,7 +371,7 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 			}
 
 			//load all present modules
-			$this->load_modules();
+			$this->load_modules( $free_modules_folder, $pro_modules_folder, $itsec_globals['has_pro'] );
 
 			//see if the saved build version is older than the current build version
 			if ( isset( $plugin_data['build'] ) && $plugin_data['build'] !== $itsec_globals['plugin_build'] ) {
@@ -357,11 +472,24 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 		}
 
 		/**
+		 * Add items to the table of contents
+		 *
+		 * @since 4.1
+		 *
+		 * @param array $item the item to add to the table of content
+		 *
+		 * @return void
+		 */
+		public function add_pro_toc_item( $item ) {
+
+			$this->pro_toc_items[] = $item;
+
+		}
+
+		/**
 		 * Add admin bar item
 		 *
 		 * @since 4.0
-		 *
-		 * @param array $item the item to add to the table of content
 		 *
 		 * @return void
 		 */
@@ -369,7 +497,7 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 
 			global $wp_admin_bar, $itsec_globals;
 
-			if ( ( ! is_multisite() && ! current_user_can( $itsec_globals['plugin_access_lvl'] ) ) || ! current_user_can( 'manage_network' ) ) {
+			if ( ( ! is_multisite() && ! current_user_can( $itsec_globals['plugin_access_lvl'] ) ) || ( is_multisite() && ! current_user_can( 'manage_network' ) ) ) {
 				return;
 			}
 
@@ -541,7 +669,7 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 		 */
 		public function admin_notices() {
 
-			if ( isset( get_current_screen()->id ) && strpos( get_current_screen()->id, 'security_page_toplevel_page_itsec_settings' ) !== false || strpos( get_current_screen()->id, 'security_page_toplevel_page_itsec_advanced' ) !== false ) {
+			if ( isset( get_current_screen()->id ) && ( strpos( get_current_screen()->id, 'security_page_toplevel_page_itsec_settings' ) !== false || strpos( get_current_screen()->id, 'security_page_toplevel_page_itsec_advanced' ) !== false || strpos( get_current_screen()->id, 'security_page_toplevel_page_itsec_pro' ) !== false ) ) {
 
 				$errors = get_settings_errors( 'itsec' );
 
@@ -855,31 +983,144 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 		 *
 		 * @since 4.0
 		 *
+		 * @param string $free_modules_folder location of free modules
+		 * @param string $pro_modules_folder  location of pro modules
+		 * @param bool   $has_pro             whether or not pro is present
+		 *
 		 * @return void
 		 */
-		public function load_modules() {
+		public function load_modules( $free_modules_folder, $pro_modules_folder, $has_pro ) {
 
 			global $itsec_globals;
 
-			$free_modules_folder = $itsec_globals['plugin_dir'] . 'modules/free';
-			$pro_modules_folder  = $itsec_globals['plugin_dir'] . 'modules/pro';
-
-			$has_pro = is_dir( $pro_modules_folder );
+			$modules = $itsec_globals['free_modules'];
 
 			if ( $has_pro ) {
 
-				foreach ( $itsec_globals['pro_modules'] as $module ) {
+				$modules = array_merge( $modules, $itsec_globals['pro_modules'] );
 
-					require( $pro_modules_folder . '/' . $module . '/index.php' );
+			}
+
+			foreach ( $modules as $module => $info ) {
+
+				if ( $has_pro === false || ! array_key_exists( $module, $itsec_globals['pro_modules'] ) ) { //don't duplicate module if pro version already loaded
+
+					$this->module_loader( $free_modules_folder, $module, $info );
+
+				} else {
+
+					$this->module_loader( $pro_modules_folder, $module, $info );
 
 				}
 
 			}
 
-			foreach ( $itsec_globals['free_modules'] as $module ) {
+		}
 
-				if ( $has_pro === false || ! in_array( $module, $itsec_globals['pro_modules'] ) ) {
-					require( $free_modules_folder . '/' . $module . '/index.php' );
+		/**
+		 * Actually does the module loading
+		 *
+		 * @since 4.0.27
+		 *
+		 * @param string $module_folder the location of the module
+		 * @param string $module        the name of the module
+		 * @param        $info          array of module info for loading
+		 *
+		 * @return void
+		 */
+		private function module_loader( $module_folder, $module, $info ) {
+
+			$run_front = false;
+			$run_admin = false;
+			$front     = null;
+
+			if ( is_admin() ) {
+
+				if ( isset( $info['has_front'] ) && $info['has_front'] === true ) { //load front-end classes in admin regardless
+
+					$run_front = true;
+
+				}
+
+				$run_admin = true;
+
+			} else {
+
+				//Front end class loading
+				if ( isset( $info['has_front'] ) && $info['has_front'] === true ) {
+
+					$option = isset( $info['option'] ) ? get_site_option( $info['option'] ) : false;
+
+					//If there is a setting to check and it is write then load it
+					if ( isset( $info['setting'] ) && ! is_array( $info['value'] ) && isset( $option[$info['setting']] ) && $option[$info['setting']] == $info['value'] ) {
+
+						$run_front = true;
+
+						//check an array of settings
+					} elseif ( isset( $info['setting'] ) && is_array( $info['value'] ) ) {
+
+						foreach ( $info['value'] as $value ) {
+
+							if ( isset( $option[$info['setting']] ) && $option[$info['setting']] == $value ) {
+
+								$run_front = true;
+
+							}
+
+						}
+
+						//Always load front-end class, not setting dependent
+					} elseif ( ! isset( $info['setting'] ) ) {
+
+						$run_front = true;
+
+					}
+
+				}
+
+			}
+
+			if ( $run_front === true ) { //load the front end class
+
+				$front_file = $module_folder . '/' . $module . '/class-itsec-' . $module . '.php';
+
+				if ( file_exists( $front_file ) ) {
+
+					$front_class = 'ITSEC_' . $info['class_id'];
+
+					if ( ! class_exists( $front_class ) ) {
+						require( $front_file );
+					}
+
+					$front = new $front_class;
+
+					if ( method_exists( $front, 'run' ) ) {
+						$front->run( $this );
+					}
+
+				}
+
+			}
+
+			if ( $run_admin === true ) { //load the admin class
+
+				$admin_file = $module_folder . '/' . $module . '/class-itsec-' . $module . '-admin.php';
+
+				if ( file_exists( $admin_file ) ) {
+
+				//Always load the admin class
+				$admin_class = 'ITSEC_' . $info['class_id'] . '_Admin';
+
+				if ( ! class_exists( $admin_class ) ) {
+					require( $admin_file );
+				}
+
+				$admin = new $admin_class;
+
+				if ( method_exists( $admin, 'run' ) ) {
+					$admin->run( $this, $front );
+				}
+
 				}
 
 			}
@@ -1015,8 +1256,8 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 						$action = 'options.php';
 					}
 					?>
-					<?php if ($screen == 'security_page_toplevel_page_itsec_settings') { ?>
-					<form name="security_page_toplevel_page_itsec_settings" method="post"
+					<?php if ( $screen == 'security_page_toplevel_page_itsec_settings' || $screen == 'security_page_toplevel_page_itsec_pro' ) { ?>
+					<form name="<?php echo $screen; ?>" method="post"
 					      action="<?php echo $action; ?>" class="itsec-settings-form">
 						<?php } ?>
 
@@ -1036,7 +1277,7 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 							<div id="postbox-container-1" class="postbox-container">
 								<?php do_meta_boxes( $screen, 'priority_side', null ); ?>
 								<?php do_meta_boxes( $screen, 'side', null ); ?>
-								<?php if ( $screen == 'security_page_toplevel_page_itsec_settings' ) { ?>
+								<?php if ( $screen == 'security_page_toplevel_page_itsec_settings' || $screen == 'security_page_toplevel_page_itsec_pro' ) { ?>
 									<a href="#"
 									   class="itsec_return_to_top"><?php _e( 'Return to top', 'it-l10n-better-wp-security' ); ?></a>
 								<?php } ?>
@@ -1045,7 +1286,7 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 
 						</div>
 
-						<?php if ($screen == 'security_page_toplevel_page_itsec_settings') { ?>
+						<?php if ( $screen == 'security_page_toplevel_page_itsec_settings' || $screen == 'security_page_toplevel_page_itsec_pro' ) { ?>
 					</form>
 				<?php } ?>
 					<!-- #post-body -->
@@ -1198,7 +1439,7 @@ if ( ! class_exists( 'ITSEC_Core' ) ) {
 				apc_clear_cache(); //Let's clear APC (if it exists) when big stuff is saved.
 			}
 
-			if ( ( ! defined( 'DOING_AJAX' ) || DOING_AJAX == false ) && function_exists( 'get_current_screen' ) && isset( get_current_screen()->id ) && ( strpos( get_current_screen()->id, 'security_page_toplevel_page_itsec_settings' ) !== false || strpos( get_current_screen()->id, 'security_page_toplevel_page_itsec_advanced' ) !== false ) ) {
+			if ( ( ! defined( 'DOING_AJAX' ) || DOING_AJAX == false ) && function_exists( 'get_current_screen' ) && isset( get_current_screen()->id ) && ( strpos( get_current_screen()->id, 'security_page_toplevel_page_itsec_settings' ) !== false || strpos( get_current_screen()->id, 'security_page_toplevel_page_itsec_advanced' ) !== false || strpos( get_current_screen()->id, 'security_page_toplevel_page_itsec_pro' ) !== false ) ) {
 
 				if ( $errors === false && isset ( $_GET['settings-updated'] ) && sanitize_text_field( $_GET['settings-updated'] ) == 'true' ) {
 

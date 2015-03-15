@@ -43,11 +43,31 @@
 	Added the ability to disable file locking (old behavior)
 	Better file lock release (try more than 1 method) before failing
 	Don't automatically show file lock error on first attempt
-1.1.10 - 2014-04-14 - Chris Wiegman
+1.0.10 - 2014-04-14 - Chris Wiegman
 	When activating SSL Log out the user to prevent cookie conflicts
 	Use LOCK_EX as a second file locking method on wp-config.php and .htaccess
 	Minor code cleanup
 	Make sure all wp_enqueue_script dependencies are in proper format
-
-
-
+1.0.11 - 2013-04-17 - Chris Wiegman
+	Make sure logs directory is present before trying to use it
+	Log a message when witelisted host triggers a lockout
+	Don't create log files if they're not going to be used
+	Miscellaneous typos and orther bugfixes
+	Add pro tab if pro modules need it
+	Upgrade module loader to only load what is needed
+1.0.12 - 2014-04-18 - Chris Wiegman
+	Make sure uploads directory is only working in blog 1 in multisite
+	Better checks for run method in module loader
+1.1.0 - 2014-04-21 - Chris Wiegman
+	Make sure "remove write permissions" works
+	Better descriptions on white list
+	Add pro table of contents if needed
+	Make sure security admin bar item works
+	Make sure lockout message only happens when needed
+	Suppress errors on readlink calls
+	Make sure class is present for permanent ban
+	Make sure white list is an array
+	Fix white listed IPs not working
+1.1.1 - 2014-04-24 - Chris Wiegman
+	Miscelaneous typos and other fixes
+	Remove extra file lock on saving .htaccess, nginx.conf and wp-config.php. Only flock will be used in these operations

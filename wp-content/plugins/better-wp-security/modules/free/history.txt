@@ -79,6 +79,32 @@
     Make sure all wp_enqueue_script dependencies are in proper format
     Reduce priority of hide backend init for better compatibility with other plugins
     SSL now logs users out when activating to prevent cookie conflicts
-
-
-
+1.0.13 - 2014-04-17 - Chris Wiegman
+	Make sure backup directory is present before trying to use it
+	Make sure backup file method is respected on all backup operations
+	Added ability to limit number of backups saved to disk
+	Minor typo and other fixes
+	Only load front-end classes as needed
+	Add link to free support at .org forums
+	Remove select(?ed) from suspicious query strings for 3.9 compatibility
+	Fixed domain mapping issue (requires http://wordpress.org/plugins/wordpress-mu-domain-mapping/ domain mapping plugin)
+	Remove array type errors on 404 pages
+	Remove remaining create function calls
+1.0.14 - 2014-04-18 - Chris Wiegman
+	XMLRPC soft block should now work with WordPress mobile app
+1.1.0 - 2014-04-21 - Chris Wiegman
+	Log when Away-mode is triggered
+	Make sure away mode file isn't accidently deleted
+	Make sure away mode doesn't even allow access to the login form (as it didn't in 3.x)
+	Enhance warnings on "Change content directory" settings
+	Better descriptions on white lists
+	Fixed XMLRPC label
+	Better XMLRPC Dashboard status
+	Don't allow logout action on wp-login.php with hide backend
+1.1.1 - 2014-04-21 - Chris Wiegman
+	Better check for variable in SSL admin
+1.1.2 - 2014-04-24 - Chris Wiegman
+	Fixed a function not found error in the brute force module
+	Improved content filtering in SSL so that more images and other content will link with appropriate protocol.
+	Fixed hide backend in cases where a lockout has expired
+	Miscelaneous typos and other fixes.
